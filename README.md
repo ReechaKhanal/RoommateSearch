@@ -1,6 +1,19 @@
+
 # RoommateSearch
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.0.
+## Group Members:
+1. Michael Ivanov
+2. Reecha Khanal
+3. Saksham Nagar
+4. Sukanth Sundaran
+
+## Project Description
+
+Our project aims at helping students or people who have moved to a new town ease their move process by helping them find roommates and getting used to the new town. Our main feature for this project will be finding roommates based on one's location and other criterias. We want to enable potential-roomates with similar interests to be matched to and contact one another. 
+
+## Technology Stack:
+Front-end: Angular version 11.0.0
+Back-end: Golang
 
 ## Development server
 
