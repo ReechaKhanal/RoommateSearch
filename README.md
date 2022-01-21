@@ -13,7 +13,7 @@ Our project aims at helping students or people who have moved to a new town ease
 
 ## Technology Stack:
 Front-end: Angular version 11.0.0
-Back-end: Golang
+Back-end: Golang 1.17.6
 
 ## Development server
 
