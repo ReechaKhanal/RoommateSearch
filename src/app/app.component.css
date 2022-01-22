@@ -1,0 +1,15 @@
+.title{
+  text-align: center;
+  color:rgb(153, 10, 242);
+  font-size:xx-large;
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
