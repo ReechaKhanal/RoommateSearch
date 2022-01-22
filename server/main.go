@@ -1,6 +1,7 @@
 package main
 
 import (
+  "fmt"
 	"github.com/gorilla/mux"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
@@ -12,6 +13,18 @@ func main() {
 	if err != nil {
 		panic("Failed to connect to database")
 	}
+
+  db.AutoMigrate(&user{})
+  db.Create(&user{Name:"Reecha"})
+
+  // Read
+  var u1 user
+  db.First(&u1) // find the first row in the user table
+
+  rows := db.First(&u1)
+  fmt.Println(rows.RowsAffected)
+
+
 	// Router to handle server requests, currently unused
 	r := mux.NewRouter()
 	app := App{db: db, r: r}
