@@ -1,0 +1,16 @@
+
+#map {
+  margin-top: 75px;
+  height: 50%;
+  width: 75%;
+}
+
+#search-box{
+  z-index: 9999;
+  width: inherit;
+}
+
+
+.leaflet-geosearchcontrol{
+  width: 500px !important;
+}
