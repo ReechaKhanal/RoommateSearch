@@ -8,6 +8,7 @@ import {MatInputModule} from '@angular/material/input';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MapComponent } from './map/map.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { MapComponent } from './map/map.component';
     AppRoutingModule,
     MatCardModule,
     BrowserAnimationsModule,
-    MatInputModule
+    MatInputModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
