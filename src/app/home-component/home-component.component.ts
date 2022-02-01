@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DbConnectService } from '../db-connect.service';
 
 @Component({
   selector: 'app-home-component',
@@ -7,9 +8,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponentComponent implements OnInit {
 
-  constructor() { }
+  backendService: DbConnectService;
 
-  ngOnInit(): void {
+  //Loaded Data
+  allUserInfo: any;
+
+  // Data Load Check Boolean
+  loadedAllUserInfo: boolean = false;
+
+  constructor(backendService: DbConnectService){
+    this.backendService = backendService;
   }
 
+  getAllUserInfo(){
+    this.backendService.getAllUserInfo().subscribe(
+      (response) => {
+        console.log('response received');
+        this.loadedAllUserInfo = true;
+        this.allUserInfo = response;
+        },
+      (error) => { console.log('error loading getAllUserInfo data'); }
+    );
+  }
+
+  ngOnInit(): void {
+    this.getAllUserInfo()
+  }
 }
