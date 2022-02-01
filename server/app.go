@@ -1,6 +1,7 @@
 package main
 
 import (
+
 	"embed"
 	"encoding/json"
 	"io/fs"
@@ -10,15 +11,18 @@ import (
 	"github.com/gorilla/mux"
 	"github.com/rs/cors"
 	"gorm.io/gorm"
+
 )
 
 //go:embed
 var static embed.FS
 
+
 type App struct {
-	db *gorm.DB
-	r  *mux.Router
+  db *gorm.DB
+  r  *mux.Router
 }
+
 
 func (a *App) start(isDevMode bool) {
 	err := a.db.AutoMigrate(&User{})
@@ -59,4 +63,5 @@ func (a *App) getAllUserInfo(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		http.Error(w, err.Error(), 400)
 	}
+
 }
