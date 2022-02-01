@@ -11,13 +11,19 @@ import { MapComponent } from './map/map.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponentComponent } from './home-component/home-component.component';
 import { LoginComponent } from './login/login.component';
+import { ProfileComponent } from './profile/profile.component';
+import { ChatComponent } from './chat/chat.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MapComponent,
     HomeComponentComponent,
-    LoginComponent
+    LoginComponent,
+    ProfileComponent,
+    ChatComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
