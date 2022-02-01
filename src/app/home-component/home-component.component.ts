@@ -34,5 +34,4 @@ export class HomeComponentComponent implements OnInit {
   ngOnInit(): void {
     this.getAllUserInfo()
   }
-
 }
