@@ -12,7 +12,7 @@ import (
 )
 
 func main() {
-	//For logging errors
+	// To Log Error
 	newLogger := logger.New(
 		log.New(os.Stdout, "\r\n", log.LstdFlags),
 		logger.Config{
@@ -22,20 +22,27 @@ func main() {
 		},
 	)
 
-	// I used sqlite for now since it's simple, but we should switch to something else later
-	db, err := gorm.Open(sqlite.Open("test.db"), &gorm.Config{Logger: newLogger})
+	db, err := gorm.Open(sqlite.Open("test1.db"), &gorm.Config{Logger: newLogger})
 	if err != nil {
 		panic("Failed to connect to database")
 	}
+
 	setup(db)
-	var loginDetail []Login
-	db.Find(&loginDetail)
-	for _, l := range loginDetail {
-		fmt.Println("Email: ", l.email, "Password: ", l.password)
+	//Get user info on the terminal
+	var users []User
+	db.Find(&users)
+	for _, u := range users {
+		fmt.Println("Name:", u.Name, "Gender:", u.Gender, "Age:", u.Age)
 	}
+
+	//Get user info by Id
+	var testuser1 User
+	db.First(&testuser1, "Id = ?", 0001)
+	fmt.Println("First user age:", testuser1.Age)
 
 	// Router to handle server requests, currently unused
 	r := mux.NewRouter()
 	app := App{db: db, r: r}
 	app.start()
+
 }
