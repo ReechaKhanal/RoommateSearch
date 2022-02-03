@@ -26,6 +26,8 @@ export class HomeComponentComponent implements OnInit {
         console.log('response received');
         this.loadedAllUserInfo = true;
         this.allUserInfo = response;
+        console.log(this.loadedAllUserInfo);
+        console.log(this.allUserInfo);
         },
       (error) => { console.log('error loading getAllUserInfo data'); }
     );
