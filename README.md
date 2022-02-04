@@ -15,23 +15,7 @@ Our project aims at helping students or people who have moved to a new town ease
 Front-end: Angular version 11.0.0
 Back-end: Golang 1.17.6
 
-## Sprint One:
-
-Mock Database Schema Information: [[Link Here]](https://github.com/ReechaKhanal/RoommateSearch/wiki/Database)
-
-Backend API Working:
-![](./Images/Postman-API-backend_GetAllUserInfo.gif)
-
-An Image of the Data Returned by the Backend:
-<img src="./Images/Backend_API_Request_in_Browser.png" />
-
-Frontend Mock Login Page:
-![](./Images/Frontend_Video_LoginPage.gif)
-
-Frontend Home and Profile Page:
-![](./Images/Frontend_Video_HomePage.gif)
-
-The data being pulled in the frontend Home Page is the Mock data present in the database called through a backend API request.
+## Sprint One: [[Link to Sprint One Information]](**https://github.com/ReechaKhanal/RoommateSearch/wiki/Database**)
 
 ## Development server
 
