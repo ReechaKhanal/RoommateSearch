@@ -9,13 +9,16 @@
     </ul>
 
     <div class = "userobjects" *ngFor="let user of allUserInfo">
-
-      <img src="../../assets/defaultman.png" alt="default man" width="200" height="150"/>
-
-      <p>{{user.Name}}</p>
-      <p>{{user.Gender}}</p>
-      <p>{{user.Age}}</p>
-      <p>{{user.Occupation}}</p>
+      <mat-card class="user-card">
+        <mat-card-title-group>
+          <mat-card-title>{{user.Name}}</mat-card-title>
+          <mat-card-subtitle>GENDER: {{user.Gender}}, AGE: {{user.Age}}, OCCUPATION:{{user.Occupation}}</mat-card-subtitle>
+          <img mat-card-md-image src="../../assets/defaultman.png" alt="default man" >
+        </mat-card-title-group>
+        <mat-card-content>
+          USER BIO
+        </mat-card-content>
+      </mat-card>
     </div>
 
   </body>
