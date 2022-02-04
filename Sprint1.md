@@ -4,6 +4,18 @@ Sprint One Board: [[https://github.com/users/ReechaKhanal/projects/10/views/4]](
 
 Mock Database Schema Information: [[Link Here]](https://github.com/ReechaKhanal/RoommateSearch/wiki/Database)
 
+- Back-end
+  - Created a Database with Mock Data #1
+  - Listen for GET request and respond with data from database #20
+  - Added a "Dev" mode for the server #38
+- Front-end
+    - Display user details in cards #45
+    - Created routing between pages #48
+    - Navbar and user profiles #31
+- Other
+  - Create a connection between front-end and back-end #3
+  - Parse back-end data #26
+
 Backend API Working:
 ![](./Images/Postman-API-backend_GetAllUserInfo.gif)
 
