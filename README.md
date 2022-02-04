@@ -17,6 +17,11 @@ Back-end: Golang 1.17.6
 
 ## Sprint One:
 
+Frontend Design Inital Look Design: [![Link Here]](https://github.com/ReechaKhanal/RoommateSearch/wiki/Frontend-Design-Initial-Look)]
+
+Mock Database Schema Information: [![Link Here]](https://github.com/ReechaKhanal/RoommateSearch/wiki/Database)]
+
+Backend API Working:
 ![](./Postman-API-backend_GetAllUserInfo.gif)
 
 ## Development server
