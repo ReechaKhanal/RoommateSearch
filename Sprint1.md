@@ -1,6 +1,6 @@
 ## Sprint One:
 
-Sprint One Board: [[https://github.com/users/ReechaKhanal/projects/10/views/4]](https://github.com/users/ReechaKhanal/projects/10/views/4)
+Sprint One Board: [[https://github.com/users/ReechaKhanal/projects/10/views/4]](https://github.com/users/ReechaKhanal/projects/10/)
 
 Mock Database Schema Information: [[Link Here]](https://github.com/ReechaKhanal/RoommateSearch/wiki/Database)
 
