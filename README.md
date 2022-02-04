@@ -15,6 +15,10 @@ Our project aims at helping students or people who have moved to a new town ease
 Front-end: Angular version 11.0.0
 Back-end: Golang 1.17.6
 
+## Sprint One:
+
+![](./Postman-API-backend_GetAllUserInfo.gif)
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
