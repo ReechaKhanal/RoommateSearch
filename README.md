@@ -15,7 +15,7 @@ Our project aims at helping students or people who have moved to a new town ease
 Front-end: Angular version 11.0.0
 Back-end: Golang 1.17.6
 
-## Sprint One: [Link to Sprint One Information](https://github.com/ReechaKhanal/RoommateSearch/wiki/Database)
+## Sprint One: [Link to Sprint One Information](https://github.com/ReechaKhanal/RoommateSearch/blob/main/Sprint1.md)
 
 ## Development server
 
