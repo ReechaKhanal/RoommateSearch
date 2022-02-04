@@ -30,12 +30,15 @@ export class MapComponent implements AfterViewInit {
       },
     });
 
-    L.tileLayer('https://{s}-tiles.locationiq.com/v2/obk/r/{z}/{x}/{y}.png?key=pk.f9ebfe3b0c08c548a67c904a161c73ad').addTo(this.map);
+    //L.tileLayer('https://{s}-tiles.locationiq.com/v2/obk/r/{z}/{x}/{y}.png?key=pk.f9ebfe3b0c08c548a67c904a161c73ad').addTo(this.map);
+
     const search = GeoSearchControl({
       provider: myProvider,
       autoComplete: true,
       searchLabel: 'Enter Location',
-      showMarker: false
+      showMarker: false,
+      style: 'bar',
+      position: 'topcenter'
     });
     this.map.addControl(search);
   }

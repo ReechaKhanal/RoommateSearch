@@ -1,16 +1,20 @@
 
 #map {
   margin-top: 75px;
-  height: 50%;
-  width: 75%;
+  height: 30%;
+  width: 100%;
+  background-color: transparent;
 }
 
 #search-box{
-  z-index: 9999;
-  width: inherit;
+  padding-left: 20px;
+  padding-top: 20px;
 }
 
+.leaflet-locationiq-results{
+  padding-top: 45px;
+}
 
-.leaflet-geosearchcontrol{
-  width: 500px !important;
+#leaflet-control-geosearch.leaflet-geosearch-bar{
+    width: 100% !important;
 }
