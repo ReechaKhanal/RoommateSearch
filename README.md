@@ -22,6 +22,9 @@ Mock Database Schema Information: [[Link Here]](https://github.com/ReechaKhanal/
 Backend API Working:
 ![](./Images/Postman-API-backend_GetAllUserInfo.gif)
 
+An Image of the Data Returned by the Backend:
+<img src="./Images/Backend_API_Request_in_Browser.png" width="200" height="400" />
+
 Frontend Mock Login Page:
 ![](./Images/Frontend_Video_LoginPage.gif)
 
