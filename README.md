@@ -15,7 +15,7 @@ Our project aims at helping students or people who have moved to a new town ease
 Front-end: Angular version 11.0.0
 Back-end: Golang 1.17.6
 
-## Sprint One: [[Link to Sprint One Information]](**https://github.com/ReechaKhanal/RoommateSearch/wiki/Database**)
+## Sprint One: [Link to Sprint One Information](https://github.com/ReechaKhanal/RoommateSearch/wiki/Database)
 
 ## Development server
 
@@ -44,4 +44,3 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-.
