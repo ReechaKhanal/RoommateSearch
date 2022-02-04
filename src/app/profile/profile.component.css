@@ -1,0 +1,13 @@
+.card{
+  padding-left: 50px;
+}
+.card-img-top{
+  height: 200px;
+  width: 200px;
+}
+.button{
+  background-color: rgb(109, 5, 227);
+  color: antiquewhite;
+  font-weight: bold;
+  padding: 10px;
+}
