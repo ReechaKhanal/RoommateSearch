@@ -20,7 +20,15 @@ Back-end: Golang 1.17.6
 Mock Database Schema Information: [[Link Here]](https://github.com/ReechaKhanal/RoommateSearch/wiki/Database)
 
 Backend API Working:
-![](./Postman-API-backend_GetAllUserInfo.gif)
+![](./Images/Postman-API-backend_GetAllUserInfo.gif)
+
+Frontend Mock Login Page:
+![](./Images/Frontend_Video_LoginPage.gif)
+
+Frontend Home and Profile Page:
+![](./Images/Frontend_Video_HomePage.gif)
+
+The data being pulled in the frontend Home Page is the Mock data present in the database called through a backend API request.
 
 ## Development server
 
