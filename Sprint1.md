@@ -4,26 +4,38 @@ Sprint One Board: [[https://github.com/users/ReechaKhanal/projects/10/views/4]](
 
 Mock Database Schema Information: [[Link Here]](https://github.com/ReechaKhanal/RoommateSearch/wiki/Database)
 
-- Back-end
-  - Created a Database with Mock Data ([#1][i1])
-  - Listen for GET request and respond with data from database ([#20][i20])
-  - Added a "Dev" mode for the server ([#38][i38])
-- Front-end
-    - Display user details in cards ([#45][i45])
-    - Created routing between pages ([#48][i48])
-    - Navbar and user profiles ([#31][i31])
-- Other
-  - Create a connection between front-end and back-end ([#3][i3])
-  - Parse back-end data ([#26][i26])
+## Major Tasks and Accomplishments:
 
-[i1]: https://github.com/ReechaKhanal/RoommateSearch/issues/1
-[i20]: https://github.com/ReechaKhanal/RoommateSearch/issues/20
-[i38]: https://github.com/ReechaKhanal/RoommateSearch/pull/38
-[i45]: https://github.com/ReechaKhanal/RoommateSearch/issues/45
-[i48]: https://github.com/ReechaKhanal/RoommateSearch/issues/48
-[i31]: https://github.com/ReechaKhanal/RoommateSearch/issues/31
-[i3]: https://github.com/ReechaKhanal/RoommateSearch/issues/3
-[i26]: https://github.com/ReechaKhanal/RoommateSearch/issues/26
+ 1. A setup for angular Frontend.
+
+ 2. A setup for Goland backend
+        [Issue #12](https://github.com/ReechaKhanal/RoommateSearch/issues/12)
+        [Issue #16](https://github.com/ReechaKhanal/RoommateSearch/issues/16)
+
+ 3. Database Schema Creation and Visualization
+        [Issue #1](https://github.com/ReechaKhanal/RoommateSearch/issues/1)
+        [Issue #6](https://github.com/ReechaKhanal/RoommateSearch/issues/6)
+
+ 4. Setup SQL Database in backend and fill it with Mock data
+        [Issue #4](https://github.com/ReechaKhanal/RoommateSearch/issues/4)
+        [Issue #6](https://github.com/ReechaKhanal/RoommateSearch/issues/6)
+
+ 5. Create a Backend API call system that can serve the frontend
+        [Issue #3](https://github.com/ReechaKhanal/RoommateSearch/issues/3)
+        [Issue #20](https://github.com/ReechaKhanal/RoommateSearch/issues/20)
+ 5. Front-end Create a Mock Login Page
+        [Issue #1](https://github.com/ReechaKhanal/RoommateSearch/issues/1)
+
+ 6. Front-end Create components for profile, and home where potential roommate matches will be displayed
+         [Issue #5](https://github.com/ReechaKhanal/RoommateSearch/issues/5)
+         [Issue #31](https://github.com/ReechaKhanal/RoommateSearch/issues/31)
+         [Issue #45](https://github.com/ReechaKhanal/RoommateSearch/issues/45)
+
+7. Create a Connection between Frontend and Backend through a API Call, parse data returned and display in the Application
+        [Issue #3](https://github.com/ReechaKhanal/RoommateSearch/issues/3)
+        [Issue #23](https://github.com/ReechaKhanal/RoommateSearch/issues/23)
+        [Issue #26](https://github.com/ReechaKhanal/RoommateSearch/issues/26)
+        [Issue #33](https://github.com/ReechaKhanal/RoommateSearch/issues/33)
 
 Backend API Working:
 ![](./Images/Postman-API-backend_GetAllUserInfo.gif)
