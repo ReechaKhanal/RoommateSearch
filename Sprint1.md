@@ -50,3 +50,7 @@ Frontend Home and Profile Page:
 ![](./Images/Frontend_Video_HomePage.gif)
 
 The data being pulled in the frontend Home Page is the Mock data present in the database called through a backend API request.
+
+Click on the Link Below to watch a demo of the app:
+[![Roommate Search/Homies Sprint 1 Demo Video]](https://www.youtube.com/watch?v=yElAkzQciXc)
+
