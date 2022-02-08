@@ -14,8 +14,7 @@ import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ChatComponent } from './chat/chat.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import {MatToolbarModule} from "@angular/material/toolbar";
-
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -34,7 +33,7 @@ import {MatToolbarModule} from "@angular/material/toolbar";
     BrowserAnimationsModule,
     MatInputModule,
     HttpClientModule,
-    MatToolbarModule
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
