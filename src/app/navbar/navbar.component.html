@@ -1,6 +1,14 @@
 <ul class="topnav">
-    <li><a class="active" href="Home.html"[routerLink]="['/home']">Home</a></li>
-    <li><a href="profile.html" [routerLink]="['/profile']">Profile</a></li>
-    <li><a href="chat.html" [routerLink]="['/chat']">Chat</a></li>
-    <li class="right"><a href="About.html">About</a></li>
+  <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+    <a [routerLink]="['/home']">Home</a>
+  </li>
+  <li [routerLinkActive]="['active']">
+    <a [routerLink]="['/profile']">My Profile</a>
+  </li>
+  <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+    <a [routerLink]="['/chat']">Chat</a>
+  </li>
+  <li class = "about" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+    <a [routerLink]="['/about']">About</a>
+  </li>
 </ul>

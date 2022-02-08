@@ -1,20 +1,7 @@
-
 #map {
-  margin-top: 75px;
-  height: 30%;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
   width: 100%;
-
-}
-
-#search-box{
-  padding-left: 20px;
-  padding-top: 20px;
-}
-
-.leaflet-locationiq-results{
-  padding-top: 45px;
-}
-
-#leaflet-control-geosearch.leaflet-geosearch-bar{
-    width: 100% !important;
 }
