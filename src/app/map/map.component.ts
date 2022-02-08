@@ -39,11 +39,20 @@ export class MapComponent implements AfterViewInit {
     });
 
     try {
-      this.map.addControl(search);
+      this.map.addControl(search).on('geosearch/showlocation',  (result) => {
+        let tempResult: any = result;
+        this.onSearch(tempResult.location.x, tempResult.location.y);
+        // tempResult.location.x | tempResult.location.y;
+    });
     } catch (error) {
       debugger
       console.log('Error in Map, while adding search box', error);
     }
+  }
+
+  onSearch(latitude: any, longitude: any){
+    console.log("Address latitude: " + latitude);
+    console.log("Address longitude: " + longitude);
   }
   constructor() { }
 
@@ -51,11 +60,8 @@ export class MapComponent implements AfterViewInit {
     this.initMap();
     let element = Array.from(document.getElementsByClassName('glass') as HTMLCollectionOf<HTMLElement>)[0];
     if(element.style != null){
-      element.style.width='60vw';
-      element.style.height='1.5vw';
-      element.style.borderRadius='10px';
-      element.style.borderWidth='revert';
-      element.style.borderColor='lightblue';
+      element.style.width='40vw', element.style.height='1.5vw', element.style.borderRadius='10px';
+      element.style.borderWidth='revert', element.style.borderColor='lightblue';
     }
 
     let element1 = Array.from(document.getElementsByClassName('leaflet-top leaflet-left') as HTMLCollectionOf<HTMLElement>)[0];
@@ -67,7 +73,6 @@ export class MapComponent implements AfterViewInit {
     if(element2.style != null){
       element2.style.visibility='HIDDEN';
     }
-
   }
 
 }
