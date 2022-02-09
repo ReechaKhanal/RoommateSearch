@@ -1,27 +1,22 @@
-<h1 class="title">LOGIN </h1>
-
 <form action="action_page.php" method="post">
-  <div class="imgcontainer">
-    <img src="img_Homies_logo2.png" alt="Homies_logo" class="Homies_logo">
-  </div>
-
+  <h3 class="title" style="padding-left: 15px;">LOGIN </h3>
   <div class="container">
-    <label for="uname"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="uname" required>
+    <div class="textcontainer">
+      <label for="uname"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="uname" required>
 
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
 
-    <button type="submit" [routerLink]="['/home']">Login</button>
-    <label>
-      <input type="checkbox" checked="checked" name="remember"> Remember me
-    </label>
+      <button type="submit" [routerLink]="['/home']">Login</button>
+      <label style="float:left;">
+        <input type="checkbox" checked="checked" name="remember" > Remember me
+      </label>
+      <a class="psw" href="#" style="float: right;">Forgot password? </a>
+    </div>
+    <div class="imgcontainer">
+      <img src="../../assets/img_Homies_logo.png" alt="Homies_logo" class="Homies_logo">
+    </div>
   </div>
-
-  <div class="container" style="background-color:#f1f1f1">
-    <button type="button" class="cancelbtn">Cancel</button>
-    <span class="psw">Forgot <a href="#">password?</a></span>
-  </div>
-</form>
 
 <router-outlet></router-outlet>

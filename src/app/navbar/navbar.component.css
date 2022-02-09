@@ -3,11 +3,12 @@ ul.topnav {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333;
+  background:#6A1B9A;
   font-family: arial;
   text-align: left;
   width: 100%;
   position: sticky;
+  z-index: 999;
   top: 0;
 }
 ul.topnav li {float: left;}

@@ -1,19 +1,21 @@
 <app-navbar></app-navbar>
 <body>
     <app-map></app-map>
-    <p style="padding-left: 15px; font-size: large;"><strong>Hi User, Roommate Matches based on your preferences</strong></p>
     <div class = "userobjects" *ngFor="let user of allUserInfo">
       <mat-card class="user-card">
         <mat-card-title-group>
           <mat-card-title>{{user.Name}}</mat-card-title>
-          <mat-card-subtitle>GENDER: {{user.Gender}}, AGE: {{user.Age}}, OCCUPATION:{{user.Occupation}}</mat-card-subtitle>
-          <img mat-card-md-image src="../../assets/defaultman.png" alt="default man" >
+          <mat-card-subtitle>
+            <div class="subtext">GENDER: {{user.Gender}}</div>
+            <div class="subtext"> AGE: {{user.Age}} </div>
+            <div class="subtext"> OCCUPATION:{{user.Occupation}} </div>
+          </mat-card-subtitle>
+          <img mat-card-lg-image src="../../assets/defaultman.png" alt="default man" >
         </mat-card-title-group>
         <mat-card-content>
           USER BIO
         </mat-card-content>
       </mat-card>
     </div>
-
   </body>
 <router-outlet></router-outlet>
