@@ -17,6 +17,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { EmailFormComponent } from './email-form/email-form.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,9 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     LoginComponent,
     ProfileComponent,
     ChatComponent,
-    NavbarComponent
+    NavbarComponent,
+    SignUpComponent,
+    EmailFormComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +42,9 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     HttpClientModule,
     MatButtonModule,
     MatIconModule,
-    MatToolbarModule
+    MatToolbarModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
