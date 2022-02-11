@@ -10,11 +10,15 @@ export class SignUpComponent implements OnInit {
   signUpForm: FormGroup;
   constructor() {
     this.signUpForm = new FormGroup({
-      email: new FormControl()
+      a: new FormControl()
     });
   }
 
   ngOnInit(): void {
+  }
+
+  signUp(): void {
+    console.log(this.signUpForm.value);
   }
 
 }

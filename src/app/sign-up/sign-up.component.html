@@ -1,5 +1,6 @@
 <mat-card class="register">
   <form [formGroup]="signUpForm">
     <app-email-form [form]="signUpForm"></app-email-form>
+    <button (click)="signUp()" mat-raised-button color="primary">Sign Up</button>
   </form>
 </mat-card>
