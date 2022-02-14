@@ -23,6 +23,7 @@
     "@angular/router": "~11.0.0",
     "@types/leaflet.fullscreen": "^1.6.1",
     "@types/leaflet.markercluster": "^1.4.6",
+    "angular-material": "^1.2.4",
     "leaflet": "^1.7.1",
     "leaflet-control-geocoder": "^2.3.0",
     "leaflet-geosearch": "^3.6.0",
