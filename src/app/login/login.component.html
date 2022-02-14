@@ -1,3 +1,4 @@
+<!--
 <form action="action_page.php" method="post">
   <h3 class="title" style="padding-left: 15px;">LOGIN </h3>
   <div class="container">
@@ -7,16 +8,37 @@
 
       <label for="psw"><b>Password</b></label>
       <input type="password" placeholder="Enter Password" name="psw" required>
+  </div>
+</form>-->
 
-      <button type="submit" [routerLink]="['/home']">Login</button>
-      <label style="float:left;">
-        <input type="checkbox" checked="checked" name="remember" > Remember me
-      </label>
+<form class="my-form" #loginForm=ngForm (ngSubmit)="Submit()">
+  <h3 class="title" style="padding-left: 15px;">LOGIN </h3>
+  <div class="container">
+    <div class="textcontainer">
+      <div class="loginForm">
+        <mat-form-field appearance="fill">
+          <mat-label for="uname">Username</mat-label>
+          <input matInput placeholder="Enter Username" name="uname" required>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label for="psw">Password</mat-label>
+          <input matInput  [type]="hide ? 'password' : 'text'" placeholder="Enter Password" name="psw" required>
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+        <mat-card-actions>
+          <button class = 'submitButton'mat-raised-button type="submit" [routerLink]="['/home']">Login</button>
+        </mat-card-actions>
+      </div>
+      <mat-label style="float:left;">
+        <input mat-input type="checkbox" checked="checked" name="remember" > Remember me
+      </mat-label>
       <a class="psw" href="#" style="float: right;">Forgot password? </a>
     </div>
     <div class="imgcontainer">
       <img src="../../assets/img_Homies_logo.png" alt="Homies_logo" class="Homies_logo">
     </div>
   </div>
-
+</form>
 <router-outlet></router-outlet>
