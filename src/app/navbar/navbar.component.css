@@ -1,3 +1,8 @@
+
+mat-toolbar{
+  padding:0px;
+  color: #6A1B9A;
+}
 ul.topnav {
   list-style-type: none;
   margin: 0;
@@ -8,7 +13,7 @@ ul.topnav {
   text-align: left;
   width: 100%;
   position: sticky;
-  z-index: 999;
+  z-index: 10;
   top: 0;
 }
 ul.topnav li {float: left;}
