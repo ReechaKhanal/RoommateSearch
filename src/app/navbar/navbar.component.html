@@ -1,14 +1,16 @@
-<ul class="topnav">
+<mat-toolbar>
+    <ul class="topnav">
     <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-    <a class = 'nav-home' [routerLink]="['/home']"><mat-icon>home</mat-icon> </a>
-  </li>
-  <li [routerLinkActive]="['active']">
-    <a class = 'nav-profile'[routerLink]="['/profile']"><mat-icon>person</mat-icon></a>
-  </li>
-  <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-    <a class = 'nav-chat' [routerLink]="['/chat']"><mat-icon> chat</mat-icon></a>
-  </li>
-  <li class = "about" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-    <a [routerLink]="['/about']">About</a>
-  </li>
-</ul>
+      <a mat-button class = 'nav-home' [routerLink]="['/home']"> <mat-icon>home</mat-icon>  </a>
+    </li>
+    <li [routerLinkActive]="['active']">
+      <a mat-button class = 'nav-profile' [routerLink]="['/profile']"><mat-icon>person</mat-icon></a>
+    </li>
+    <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+      <a mat-button class = 'nav-chat' [routerLink]="['/chat']"><mat-icon> chat</mat-icon></a>
+    </li>
+    <li class = "about" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+      <a [routerLink]="['/about']">About</a>
+    </li>
+  </ul>
+</mat-toolbar>
