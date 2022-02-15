@@ -1,23 +1,23 @@
 <mat-card class="register">
-  <form [formGroup]="signUpForm">
+  <form [formGroup]="signUpForm" (ngSubmit)="signUp()">
     <!--- First name --->
     <mat-form-field appearance="fill">
       <mat-label>First Name</mat-label>
-      <input type="text" matInput [formControl]="firstNameFormControl" placeholder="Enter First Name" name="uname"
-             required>
+      <input type="text" matInput [formControl]="firstNameFormControl" placeholder="Enter First Name">
       <mat-error>
         First name is required
       </mat-error>
     </mat-form-field>
+
     <!--- Last name --->
     <mat-form-field appearance="fill">
       <mat-label>Last Name</mat-label>
-      <input type="text" matInput [formControl]="lastNameFormControl" placeholder="Enter Last Name" name="uname"
-             required>
+      <input type="text" matInput [formControl]="lastNameFormControl" placeholder="Enter Last Name">
       <mat-error>
         Last name is required
       </mat-error>
     </mat-form-field>
+
     <!--- Telephone --->
     <mat-form-field class="telephone-full-width" appearance="fill">
       <mat-label>Telephone</mat-label>
@@ -27,6 +27,7 @@
         Please input a valid phone number
       </mat-error>
     </mat-form-field>
+
     <!--- Email --->
     <mat-form-field class="email-full-width" appearance="fill">
       <mat-label>Email *</mat-label>
@@ -38,12 +39,13 @@
         Email is <strong>required</strong>
       </mat-error>
     </mat-form-field>
+
     <!--- Password --->
     <mat-form-field appearance="fill">
       <mat-label for="psw">Password</mat-label>
       <input matInput [formControl]="passwordFormControl" [type]="hide ? 'password' : 'text'"
-             placeholder="Enter Password" name="psw" required>
-      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+             placeholder="Enter Password">
+      <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
               [attr.aria-pressed]="hide">
         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>
@@ -54,6 +56,7 @@
         Password is <strong>required</strong>
       </mat-error>
     </mat-form-field>
-    <button class="submitButton" (click)="signUp()" mat-raised-button color="primary">Sign Up</button>
+
+    <button class="submitButton" mat-raised-button color="primary">Sign Up</button>
   </form>
 </mat-card>

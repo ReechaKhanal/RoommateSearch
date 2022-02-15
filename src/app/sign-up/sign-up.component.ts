@@ -26,10 +26,11 @@ export class SignUpComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
   signUp(): void {
-    // TODO: send form data to backend server
     console.log(this.signUpForm.value);
+    if (this.signUpForm.valid) {
+      // TODO: send form data to backend server
+    }
   }
 
 }

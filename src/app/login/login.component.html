@@ -18,17 +18,17 @@
       <div class="loginForm">
         <mat-form-field appearance="fill">
           <mat-label for="uname">Username</mat-label>
-          <input matInput placeholder="Enter Username" name="uname" required>
+          <input matInput [formControl]="usernameFormControl" placeholder="Enter Username" name="uname" required>
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label for="psw">Password</mat-label>
-          <input matInput  [type]="hide ? 'password' : 'text'" placeholder="Enter Password" name="psw" required>
-          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <input matInput [formControl]="passwordFormControl"  [type]="hide ? 'password' : 'text'" placeholder="Enter Password" name="psw" required>
+          <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
           </button>
         </mat-form-field>
         <mat-card-actions>
-          <button class = 'submitButton'mat-raised-button type="submit" [routerLink]="['/home']">Login</button>
+          <button class = 'submitButton'mat-raised-button type="submit">Login</button>
         </mat-card-actions>
       </div>
       <mat-label style="float:left;">
