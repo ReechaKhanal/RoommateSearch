@@ -20,7 +20,6 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { EmailFormComponent } from './email-form/email-form.component';
-//import { TextFormComponent } from './text-form/text-form.component';
 
 @NgModule({
   declarations: [
