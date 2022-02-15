@@ -1,4 +1,17 @@
+/* The sign up card */
 .register {
-  max-width: 400px;
+  max-width: 450px;
   margin: auto;
+}
+
+.submitButton {
+  background-color: #04AA6D;
+  color: white;
+  cursor: pointer;
+  width: 100%;
+}
+
+/* Add a hover effect for buttons */
+button:hover {
+  opacity: 0.8;
 }

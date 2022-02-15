@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-sign-up',
@@ -8,17 +8,29 @@ import {FormControl, FormGroup} from '@angular/forms';
 })
 export class SignUpComponent implements OnInit {
   signUpForm: FormGroup;
+  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
+  firstNameFormControl = new FormControl('', [Validators.required]);
+  lastNameFormControl = new FormControl('', [Validators.required]);
+  telephoneFormControl = new FormControl('', [Validators.pattern('[- +()0-9]+')]);
+  passwordFormControl = new FormControl('', [Validators.required, Validators.minLength(5)]);
+  hide = true;
   constructor() {
     this.signUpForm = new FormGroup({
-      a: new FormControl()
+      email: this.emailFormControl,
+      firstName: this.firstNameFormControl,
+      lastName: this.lastNameFormControl,
+      telephone: this.telephoneFormControl,
+      password: this.passwordFormControl
     });
   }
 
   ngOnInit(): void {
   }
-
   signUp(): void {
     console.log(this.signUpForm.value);
+    if (this.signUpForm.valid) {
+      // TODO: send form data to backend server
+    }
   }
 
 }
