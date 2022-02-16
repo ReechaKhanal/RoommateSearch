@@ -5,7 +5,7 @@ form {
 
 /* Set a style for all buttons */
 .submitButton {
-  background-color: #04AA6D;
+  background-color: steelblue;
   color: white;
   cursor: pointer;
   width: 100%;
