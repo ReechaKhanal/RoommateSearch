@@ -14,3 +14,16 @@
 .example-full-width {
   width: 100%;
 }
+
+mat-sidenav-container{
+  height: 100%;
+}
+
+mat-sidenav{
+  background-color: steelblue;
+  width: fit-content;
+}
+
+mat-sidenav-content{
+  width: 100%;
+}
