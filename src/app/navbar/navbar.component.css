@@ -3,6 +3,12 @@ mat-toolbar{
   padding:0px;
   color: #6A1B9A;
 }
+
+a{
+  border-radius: 0px;
+  padding: 0px;
+}
+
 ul.topnav {
   list-style-type: none;
   margin: 0;
@@ -32,7 +38,7 @@ ul.topnav li a:hover:not(.active) {
     color: black;
 }
 ul.topnav li.active {
-    background-color: #4CAF50;
+    background-color: #ddd;
 }
 ul.topnav li.about {
     float: right;

@@ -21,6 +21,8 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { EmailFormComponent } from './email-form/email-form.component';
 import { FooterComponent } from './footer/footer.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { SidebarService } from './navbar/sidebar.service';
 //import { TextFormComponent } from './text-form/text-form.component';
 
 @NgModule({
@@ -47,9 +49,10 @@ import { FooterComponent } from './footer/footer.component';
     MatIconModule,
     MatToolbarModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSidenavModule
   ],
-  providers: [],
+  providers: [SidebarService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

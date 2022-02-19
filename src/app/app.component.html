@@ -1,2 +1,9 @@
 <h1 class="title">Homies</h1>
-<router-outlet></router-outlet>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode = "side" [(opened)]= 'opened'>
+    <app-profile></app-profile>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
