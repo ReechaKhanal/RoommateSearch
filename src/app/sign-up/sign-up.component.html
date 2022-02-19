@@ -1,62 +1,68 @@
 <mat-card class="register">
+
+  <mat-card-title class="title">Create an account</mat-card-title>
   <form [formGroup]="signUpForm" (ngSubmit)="signUp()">
-    <!--- First name --->
-    <mat-form-field appearance="fill">
-      <mat-label>First Name</mat-label>
-      <input type="text" matInput [formControl]="firstNameFormControl" placeholder="Enter First Name">
-      <mat-error>
-        First name is required
-      </mat-error>
-    </mat-form-field>
+    <div class="signUpForm">
+      <!--- First name --->
+      <mat-form-field class="fname" appearance="fill">
+        <mat-label>First Name *</mat-label>
+        <input type="text" matInput [formControl]="firstNameFormControl" placeholder="Enter First Name">
+        <mat-error>
+          First name is required
+        </mat-error>
+      </mat-form-field>
 
-    <!--- Last name --->
-    <mat-form-field appearance="fill">
-      <mat-label>Last Name</mat-label>
-      <input type="text" matInput [formControl]="lastNameFormControl" placeholder="Enter Last Name">
-      <mat-error>
-        Last name is required
-      </mat-error>
-    </mat-form-field>
+      <!--- Last name --->
+      <mat-form-field class="lname" appearance="fill">
+        <mat-label>Last Name *</mat-label>
+        <input type="text" matInput [formControl]="lastNameFormControl" placeholder="Enter Last Name">
+        <mat-error>
+          Last name is required
+        </mat-error>
+      </mat-form-field>
 
-    <!--- Telephone --->
-    <mat-form-field class="telephone-full-width" appearance="fill">
-      <mat-label>Telephone</mat-label>
-      <span matPrefix>+1 &nbsp;</span>
-      <input type="tel" matInput [formControl]="telephoneFormControl" placeholder="555-555-1234">
-      <mat-error>
-        Please input a valid phone number
-      </mat-error>
-    </mat-form-field>
+      <!--- Telephone --->
+      <mat-form-field class="telephone" appearance="fill">
+        <mat-label>Telephone</mat-label>
+        <span matPrefix>+1 &nbsp;</span>
+        <input type="tel" matInput [formControl]="telephoneFormControl" placeholder="555-555-1234">
+        <mat-error>
+          Please input a valid phone number
+        </mat-error>
+      </mat-form-field>
 
-    <!--- Email --->
-    <mat-form-field class="email-full-width" appearance="fill">
-      <mat-label>Email *</mat-label>
-      <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com">
-      <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-        Please enter a valid email address
-      </mat-error>
-      <mat-error *ngIf="emailFormControl.hasError('required')">
-        Email is <strong>required</strong>
-      </mat-error>
-    </mat-form-field>
+      <!--- Email --->
+      <mat-form-field class="email" appearance="fill">
+        <mat-label>Email *</mat-label>
+        <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com">
+        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="emailFormControl.hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
 
-    <!--- Password --->
-    <mat-form-field appearance="fill">
-      <mat-label for="psw">Password</mat-label>
-      <input matInput [formControl]="passwordFormControl" [type]="hide ? 'password' : 'text'"
-             placeholder="Enter Password">
-      <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-              [attr.aria-pressed]="hide">
-        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-      </button>
-      <mat-error *ngIf="passwordFormControl.hasError('minlength') && !passwordFormControl.hasError('required')">
-        Must be greater than 5 characters
-      </mat-error>
-      <mat-error *ngIf="passwordFormControl.hasError('required')">
-        Password is <strong>required</strong>
-      </mat-error>
-    </mat-form-field>
-
+      <!--- Password --->
+      <mat-form-field class="psw" appearance="fill">
+        <mat-label>Password *</mat-label>
+        <input matInput [formControl]="passwordFormControl" [type]="hide ? 'password' : 'text'"
+               placeholder="Enter Password">
+        <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="passwordFormControl.hasError('minlength') && !passwordFormControl.hasError('required')">
+          Must be greater than 5 characters
+        </mat-error>
+        <mat-error *ngIf="passwordFormControl.hasError('required')">
+          Password is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
     <button class="submitButton" mat-raised-button color="primary">Sign Up</button>
   </form>
+  <mat-card-content class="loginLink">
+    <a href="/">Already have an account?</a>
+  </mat-card-content>
 </mat-card>

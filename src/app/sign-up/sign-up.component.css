@@ -1,14 +1,28 @@
 /* The sign up card */
 .register {
-  max-width: 450px;
+
+  max-width: 500px;
   margin: auto;
+}
+.title {
+  text-align: center;
+}
+.signUpForm {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
 }
 
 .submitButton {
-  background-color: #04AA6D;
+  background-color: steelblue;
   color: white;
   cursor: pointer;
   width: 100%;
+}
+
+.loginLink {
+  float: right;
+  margin-top: 16px
 }
 
 /* Add a hover effect for buttons */
