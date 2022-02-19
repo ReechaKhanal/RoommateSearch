@@ -23,6 +23,11 @@
   margin-top: 16px
 }
 
+.loginLink {
+  float: right;
+  margin-top: 16px
+}
+
 /* Add a hover effect for buttons */
 button:hover {
   opacity: 0.8;
