@@ -1,13 +1,20 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponentComponent } from './home-component/home-component.component'
+import { ChatComponent } from './chat/chat.component';
+import { HomeComponentComponent } from './home-component/home-component.component';
 import { LoginComponent } from './login/login.component';
+import { ProfileComponent } from './profile/profile.component';
+import {SignUpComponent} from './sign-up/sign-up.component';
 
 const routes: Routes = [
+  { path: '',     component: LoginComponent},
   {path: 'home', component: HomeComponentComponent},
-  {path: 'login', component: LoginComponent }
+  // {path: 'login', component: LoginComponent },
+  {path: 'profile', component: ProfileComponent },
+  {path: 'chat', component: ChatComponent },
+  {path: 'sign_up', component: SignUpComponent}
 ];
-export const all=[HomeComponentComponent, LoginComponent]
+export const all = [HomeComponentComponent, LoginComponent];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -14,6 +14,14 @@ import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ChatComponent } from './chat/chat.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { EmailFormComponent } from './email-form/email-form.component';
+import { FooterComponent } from './footer/footer.component';
+//import { TextFormComponent } from './text-form/text-form.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +31,10 @@ import { NavbarComponent } from './navbar/navbar.component';
     LoginComponent,
     ProfileComponent,
     ChatComponent,
-    NavbarComponent
+    NavbarComponent,
+    SignUpComponent,
+    EmailFormComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +42,12 @@ import { NavbarComponent } from './navbar/navbar.component';
     MatCardModule,
     BrowserAnimationsModule,
     MatInputModule,
-    HttpClientModule
+    HttpClientModule,
+    MatButtonModule,
+    MatIconModule,
+    MatToolbarModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

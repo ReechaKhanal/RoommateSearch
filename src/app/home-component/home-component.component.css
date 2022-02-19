@@ -1,48 +1,39 @@
-ul.topnav {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #333;
-  font-family: arial;
-  text-align: left;
-  width: 100%;
-  position: sticky;
-  top: 0;
-}
-ul.topnav li {float: left;}
-ul.topnav li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  float: left;
-  font-size: 17px;
-  border-right: 1px solid #bbb;
-}
-ul.topnav li a:hover:not(.active) {
-    background-color: #ddd;
-    color: black;
-}
-ul.topnav li a.active {
-    background-color: #4CAF50;
-}
-ul.topnav li.right {
-    float: right;
-}
-@media screen and (max-width: 720px) {
-  ul.topnav li{
-      width: 100%;
-  }
-  ul.topnav a{
-      width: 100%;
-  }
-}
 img {
   background: #eaeaed;
   border: 1px solid #9799a7;
-  float: right;
   margin: 8px 0 0 20px;
   padding: 4px;
+  border-radius: 50px;
 }
+.user-card {
+  max-width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+}
+@media only screen and (max-width: 1500px) {
+  user-card {
+    max-width: 60%;;
+  }
+}
+@media only screen and (max-width: 500px) {
+  user-card {
+    max-width: 80%;
+  }
+}
+.subtext{
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.user-card {
+  /* offset-x | offset-y | blur-radius | spread-radius | color */
+  -webkit-box-shadow: 2px 2px 2px 1px rgba(0,0,0,0.5);
+  -moz-box-shadow: 2px 2px 2px 1px rgba(0,0,0,0.425);
+  box-shadow: 2px 2px 2px 1px rgba(0,0,0,0.35);
+  color: black;
+  border-radius: 15px;
+  background-color: #fafafa;
+}
+
+.user-card { transition: all .35s ease-in-out; }
+.user-card:hover { transform: scale(1.1); }

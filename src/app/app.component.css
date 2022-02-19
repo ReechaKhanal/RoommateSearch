@@ -1,7 +1,8 @@
 .title{
   text-align: center;
-  color:rgb(153, 10, 242);
+  color:steelblue;
   font-size:xx-large;
+  z-index: 999;
 }
 
 .example-form {

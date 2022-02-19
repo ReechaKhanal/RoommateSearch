@@ -1,1 +1,17 @@
-<p>profile works!</p>
+<app-navbar></app-navbar>
+<div class="card">
+  <h1>Hello User </h1>
+  <img
+    src="../../assets/defaultman.png"
+    class="card-img-top"
+    alt="..."
+  />
+  <div class="card-body">
+    <h5 class="card-title">First Name, Last Name</h5>
+    <p class="card-text">
+      Some Information, and preferences
+    </p>
+    <button mat-button class = "button" [routerLink]="['/home']">Find Homies</button>
+  </div>
+</div>
+<app-footer></app-footer>

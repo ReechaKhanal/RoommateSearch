@@ -1,16 +1,23 @@
-<h1 class="title"> </h1>
+<app-navbar></app-navbar>
 <body>
-    <ul class="topnav">
-      <li><a class="active" href="Home.html">Home</a></li>
-      <li><a href="profile">Profile</a></li>
-      <li><a href="chat">Chat</a></li>
-      <li><a href="">something</a></li>
-      <li class="right" ><a href="About.html">About</a></li>
-    </ul>
-    <p>place holder text,
-        <img src="defaultman.png" alt="default man" width="200" height="150"> 
-        place holder text bottom
-    </p>
-        
-    </body>
+    <app-map></app-map>
+    <div class = "userobjects" *ngFor="let user of allUserInfo">
+      <mat-card class="user-card">
+        <mat-card-title-group>
+          <mat-card-title>{{user.Name}}</mat-card-title>
+          <mat-card-subtitle>
+            <div class="subtext">GENDER: {{user.Gender}}</div>
+            <div class="subtext"> AGE: {{user.Age}} </div>
+            <div class="subtext"> OCCUPATION:{{user.Occupation}} </div>
+          </mat-card-subtitle>
+          <img mat-card-lg-image src="../../assets/defaultman.png" alt="default man" >
+        </mat-card-title-group>
+        <mat-card-content>
+          USER BIO
+        </mat-card-content>
+      </mat-card>
+    </div>
+</body>
+<app-footer></app-footer>
+
 <router-outlet></router-outlet>
