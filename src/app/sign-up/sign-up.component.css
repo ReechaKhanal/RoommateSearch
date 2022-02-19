@@ -1,5 +1,6 @@
 /* The sign up card */
 .register {
+
   max-width: 500px;
   margin: auto;
 }
@@ -18,6 +19,7 @@
   cursor: pointer;
   width: 100%;
 }
+
 .loginLink {
   float: right;
   margin-top: 16px
