@@ -2,10 +2,10 @@
 # RoommateSearch
 
 ## Group Members:
-1. Michael Ivanov
-2. Reecha Khanal
-3. Saksham Nagar
-4. Sukanth Sundaran
+1. Michael Ivanov: [Mivanov9](https://github.com/Mivanov9)
+2. Reecha Khanal : [ReechaKhanal](https://github.com/ReechaKhanal)
+3. Saksham Nagar : [SuperNova104](https://github.com/SuperNova104)
+4. Sukanth Sundaran: [SukanthS](https://github.com/SukanthS)
 
 ## Project Description
 
