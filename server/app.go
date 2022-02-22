@@ -24,6 +24,7 @@ func (a *App) start() {
 	// DB functions
 	a.r.HandleFunc("/getAllUserInfo", a.getAllUserInfo).Methods("GET")
 	a.r.HandleFunc("/getLoginInfo", a.getLoginInfo).Methods("GET")
+	a.r.HandleFunc("/login", a.login).Methods("POST")
 	handle := a.getHandle()
 	log.Fatal(http.ListenAndServe(":8080", handle))
 }
@@ -66,4 +67,27 @@ func (a *App) getLoginInfo(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), 400)
 	}
 
+}
+
+func (a *App) login(w http.ResponseWriter, r *http.Request) {
+	// Decode login info
+	var login Login
+	err := json.NewDecoder(r.Body).Decode(&login)
+	if err != nil {
+		http.Error(w, err.Error(), 400)
+		return
+	}
+	// Find if user is in database
+	var user Login
+	err = a.db.First(&user, "email = ?", login.Email).Error
+	if err != nil {
+		http.Error(w, "Invalid email", 400)
+		return
+	}
+	// Find if login password matches user's password
+	isMatch := doPasswordMatch(user.Password, login.Password)
+	if !isMatch {
+		http.Error(w, "Invalid login", 400)
+		return
+	}
 }
