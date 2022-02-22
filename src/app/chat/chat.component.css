@@ -1,0 +1,25 @@
+.chat-container{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.chat-history{
+  height: 100%;
+  width: 40%;
+}
+
+.chat-content{
+  height: 100%;
+  width: 60%;
+  margin: 0px;
+}
+
+.send-message-button{
+  background-color: blue;
+  color: white;
+  margin: 5px;
+}
+
+.send-message-input{
+  padding: 10px;
+  width: 40%;
+}

@@ -20,6 +20,10 @@ export class HomeComponentComponent implements OnInit {
     this.backendService = backendService;
   }
 
+  wantToChat(userId: string){
+    console.log('I want to chat with the user:' + userId);
+  }
+
   getAllUserInfo(){
     this.backendService.getAllUserInfo().subscribe(
       (response) => {
