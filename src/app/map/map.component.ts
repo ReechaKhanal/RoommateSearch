@@ -60,7 +60,7 @@ export class MapComponent implements AfterViewInit {
     this.initMap();
     let element = Array.from(document.getElementsByClassName('glass') as HTMLCollectionOf<HTMLElement>)[0];
     if(element.style != null){
-      element.style.width='40vw', element.style.height='2vw', element.style.borderRadius='50px', element.style.paddingLeft='10px';
+      element.style.width='40vw', element.style.height='2vw', element.style.borderRadius='8px', element.style.paddingLeft='10px';
       element.style.borderWidth='revert', element.style.borderColor='steelblue', element.style.fontSize='14px';
     }
 
