@@ -23,7 +23,6 @@ import { EmailFormComponent } from './email-form/email-form.component';
 import { FooterComponent } from './footer/footer.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { SidebarService } from './navbar/sidebar.service';
-//import { TextFormComponent } from './text-form/text-form.component';
 
 @NgModule({
   declarations: [
