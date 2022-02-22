@@ -6,6 +6,7 @@ import (
 	"log"
 	"net/http"
 	"strconv"
+	"time"
 
 	"github.com/gorilla/mux"
 	"gorm.io/gorm"
@@ -90,4 +91,18 @@ func (a *App) login(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Invalid login", 400)
 		return
 	}
+	// Create JWT token and set cookie
+	expirationTime := time.Now().Add(5 * time.Minute)
+	tokenString, err := createToken(user.Username, expirationTime)
+	if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		return
+	}
+	http.SetCookie(w, &http.Cookie{
+		Name:     "token",
+		Value:    tokenString,
+		Expires:  expirationTime,
+		HttpOnly: true,
+		Secure:   true,
+	})
 }
