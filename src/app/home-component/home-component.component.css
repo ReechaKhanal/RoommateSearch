@@ -5,11 +5,20 @@ img {
   padding: 4px;
   border-radius: 50px;
 }
-.user-card {
-  max-width: 50%;
-  margin-left: auto;
-  margin-right: auto;
+.alluserobjects{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.userobjects {
+  width: 30%;
+  margin-left: 25px;
+  margin-right: 25px;
   margin-top: 20px;
+  padding-top: 15px;
 }
 @media only screen and (max-width: 1500px) {
   user-card {
@@ -29,7 +38,7 @@ img {
   /* offset-x | offset-y | blur-radius | spread-radius | color */
   -webkit-box-shadow: 2px 2px 2px 1px rgba(0,0,0,0.5);
   -moz-box-shadow: 2px 2px 2px 1px rgba(0,0,0,0.425);
-  box-shadow: 2px 2px 2px 1px rgba(0,0,0,0.35);
+  box-shadow: 1px 1px 1px 0.5px rgba(0,0,0,0.35);
   color: black;
   background-color: #fafafa;
 }
