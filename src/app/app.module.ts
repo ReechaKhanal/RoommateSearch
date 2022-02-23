@@ -23,6 +23,7 @@ import { EmailFormComponent } from './email-form/email-form.component';
 import { FooterComponent } from './footer/footer.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { SidebarService } from './navbar/sidebar.service';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { SidebarService } from './navbar/sidebar.service';
     MatToolbarModule,
     FormsModule,
     ReactiveFormsModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatSelectModule
   ],
   providers: [SidebarService],
   bootstrap: [AppComponent]
