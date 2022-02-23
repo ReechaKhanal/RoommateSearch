@@ -1,5 +1,5 @@
 <mat-card class="register">
-  
+
   <mat-card-title class="title">Create an account</mat-card-title>
   <form [formGroup]="signUpForm" (ngSubmit)="signUp()">
     <div class="signUpForm">
@@ -8,7 +8,7 @@
         <mat-label>First Name *</mat-label>
         <input type="text" matInput [formControl]="firstNameFormControl" placeholder="Enter First Name">
         <mat-error>
-          First name is required
+          First name is <strong>required</strong>
         </mat-error>
       </mat-form-field>
 
@@ -17,7 +17,7 @@
         <mat-label>Last Name *</mat-label>
         <input type="text" matInput [formControl]="lastNameFormControl" placeholder="Enter Last Name">
         <mat-error>
-          Last name is required
+          Last name is <strong>required</strong>
         </mat-error>
       </mat-form-field>
 
@@ -31,6 +31,33 @@
         </mat-error>
       </mat-form-field>
 
+      <div class="selection">
+      <!--- Room Status box --->
+        <mat-form-field appearance="fill">
+          <mat-label>Room Status *</mat-label>
+          <mat-select matInput [formControl]="statusFormControl">
+            <mat-option value="have">I <strong>have</strong> a room</mat-option>
+            <mat-option value="need">I <strong>need</strong> a room</mat-option>
+          </mat-select>
+          <mat-error>
+            Please choose an option
+          </mat-error>
+        </mat-form-field>
+
+        <!--- Gender --->
+        <mat-form-field appearance="fill">
+          <mat-label>Gender *</mat-label>
+          <mat-select matInput [formControl]="genderFormControl">
+            <mat-option value="male">Male</mat-option>
+            <mat-option value="female">Female</mat-option>
+            <mat-option value="other">Other</mat-option>
+            <mat-option value="none">I rather not specify</mat-option>
+          </mat-select>
+          <mat-error>
+            Please choose an option
+          </mat-error>
+        </mat-form-field>
+      </div>
       <!--- Email --->
       <mat-form-field class="email" appearance="fill">
         <mat-label>Email *</mat-label>
@@ -60,6 +87,7 @@
         </mat-error>
       </mat-form-field>
     </div>
+
     <button class="submitButton" mat-raised-button color="primary">Sign Up</button>
   </form>
   <mat-card-content class="loginLink">

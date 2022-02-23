@@ -13,6 +13,8 @@ export class SignUpComponent implements OnInit {
   lastNameFormControl = new FormControl('', [Validators.required]);
   telephoneFormControl = new FormControl('', [Validators.pattern('[- +()0-9]+')]);
   passwordFormControl = new FormControl('', [Validators.required, Validators.minLength(5)]);
+  statusFormControl = new FormControl('', [Validators.required]);
+  genderFormControl = new FormControl('', [Validators.required]);
   hide = true;
   constructor() {
     this.signUpForm = new FormGroup({
@@ -20,7 +22,9 @@ export class SignUpComponent implements OnInit {
       firstName: this.firstNameFormControl,
       lastName: this.lastNameFormControl,
       telephone: this.telephoneFormControl,
-      password: this.passwordFormControl
+      password: this.passwordFormControl,
+      status: this.statusFormControl,
+      gender: this.genderFormControl
     });
   }
 
