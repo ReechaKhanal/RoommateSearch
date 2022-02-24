@@ -15,6 +15,7 @@ export class SignUpComponent implements OnInit {
   passwordFormControl = new FormControl('', [Validators.required, Validators.minLength(5)]);
   statusFormControl = new FormControl('', [Validators.required]);
   genderFormControl = new FormControl('', [Validators.required]);
+  addressFormControl = new FormControl('', [Validators.required]);
   hide = true;
   constructor() {
     this.signUpForm = new FormGroup({
@@ -24,7 +25,8 @@ export class SignUpComponent implements OnInit {
       telephone: this.telephoneFormControl,
       password: this.passwordFormControl,
       status: this.statusFormControl,
-      gender: this.genderFormControl
+      gender: this.genderFormControl,
+      address: this.addressFormControl
     });
   }
 
