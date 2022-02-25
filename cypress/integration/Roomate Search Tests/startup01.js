@@ -29,11 +29,12 @@ describe('Startup Roommate Search', () => {
 
 		// Click on the profile button and see if it takes us to the profile page
 		cy.get('.nav-profile').click()
-    cy.contains('Find Homies');
+    cy.contains('Update preferences');
+    cy.get('.nav-profile').click()
 
 		// Click on the Chat button in Nav Bar and see if it takes us to the Chat Page
     cy.get('.nav-chat').click();
-    cy.contains('My Chat History');
+    cy.contains('Chat History');
 
     //Click on the About button in Navigation Bar
     cy.get('.about').click();

@@ -4,6 +4,8 @@ img {
   margin: 8px 0 0 20px;
   padding: 4px;
   border-radius: 50px;
+  width: 40%;
+  height: 100%;
 }
 .alluserobjects{
   display: flex;
