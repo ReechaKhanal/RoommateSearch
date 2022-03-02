@@ -30,7 +30,7 @@ func (a *App) start() {
 	log.Fatal(http.ListenAndServe(":8080", handle))
 }
 
-func (a *App) getAllUserInfo(w http.ResponseWriter, r *http.Request) {
+func (a *App) GetAllUserInfo(w http.ResponseWriter, r *http.Request) {
 	var users []User
 	// Grab users from the database
 	err := a.db.Find(&users).Error
