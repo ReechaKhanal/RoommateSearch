@@ -4,18 +4,36 @@ import (
   "testing"
   "net/http"
   "net/http/httptest"
-  "fmt"
+
+	"github.com/gorilla/mux"
+	"gorm.io/driver/sqlite"
+	"gorm.io/gorm"
 )
 
 func TestGetAllUserInfo(t *testing.T){
 
-  req, err := http.NewRequest("GET", "/getAllUserInfo", nil)
+  r := mux.NewRouter()
+  db, err := gorm.Open(sqlite.Open("test1.db"), &gorm.Config{})
+  if err != nil {
+    panic("Failed to connect to database")
+  }
+
+  setup(db)
+  //Get user info on the terminal
+  var users []User
+  db.Find(&users)
+  // for _, u := range users {
+  //   fmt.Println("Name:", u.Name, "Gender:", u.Gender, "Age:", u.Age)
+  // }
+  app := App{db: db, r: r}
+
+  req, err := http.NewRequest("GET", "/GetAllUserInfo", nil)
   if err != nil {
     t.Fatal(err)
   }
   // We create a ResponseRecorder (which satisfies http.ResponseWriter) to record the response.
   rr := httptest.NewRecorder()
-  handler := http.HandlerFunc(GetAllUserInfo)
+  handler := http.HandlerFunc(app.GetAllUserInfo)
 
   // Our handlers satisfy http.Handler, so we can call their ServeHTTP method
   // directly and pass in our Request and ResponseRecorder.
@@ -27,11 +45,9 @@ func TestGetAllUserInfo(t *testing.T){
         status, http.StatusOK)
   }
 
-  fmt.Printf(rr.Body.String())
-  // Check if the response body is what we expect
-  //expected := {"alive": true}
-  //if rr.Body.String() != expected {
-  //  t.Errorf("handler returned unexpected body: got %v want %v",
-  //      rr.Body.String(), expected)
-  //}
+  //fmt.Println( (rr.Body))
+  // Check if the response body is empty, Error should be thrown in this case
+  if rr.Body.Len() <= 0{
+    t.Errorf("handler returned empty body")
+  }
 }

@@ -23,7 +23,7 @@ func (a *App) start() {
 		panic("Failed to migrate database")
 	}
 	// DB functions
-	a.r.HandleFunc("/getAllUserInfo", a.getAllUserInfo).Methods("GET")
+	a.r.HandleFunc("/getAllUserInfo", a.GetAllUserInfo).Methods("GET")
 	a.r.HandleFunc("/getLoginInfo", a.getLoginInfo).Methods("GET")
 	a.r.HandleFunc("/login", a.login).Methods("POST")
 	handle := a.getHandle()
