@@ -23,14 +23,14 @@ func (a *App) start() {
 		panic("Failed to migrate database")
 	}
 	// DB functions
-	a.r.HandleFunc("/getAllUserInfo", a.GetAllUserInfo).Methods("GET")
+	a.r.HandleFunc("/getAllUserInfo", a.getAllUserInfo).Methods("GET")
 	a.r.HandleFunc("/getLoginInfo", a.getLoginInfo).Methods("GET")
 	a.r.HandleFunc("/login", a.login).Methods("POST")
 	handle := a.getHandle()
 	log.Fatal(http.ListenAndServe(":8080", handle))
 }
 
-func (a *App) GetAllUserInfo(w http.ResponseWriter, r *http.Request) {
+func (a *App) getAllUserInfo(w http.ResponseWriter, r *http.Request) {
 	var users []User
 	// Grab users from the database
 	err := a.db.Find(&users).Error

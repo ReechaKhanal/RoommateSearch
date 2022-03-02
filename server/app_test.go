@@ -27,13 +27,13 @@ func TestGetAllUserInfo(t *testing.T){
   // }
   app := App{db: db, r: r}
 
-  req, err := http.NewRequest("GET", "/GetAllUserInfo", nil)
+  req, err := http.NewRequest("GET", "/getAllUserInfo", nil)
   if err != nil {
     t.Fatal(err)
   }
   // We create a ResponseRecorder (which satisfies http.ResponseWriter) to record the response.
   rr := httptest.NewRecorder()
-  handler := http.HandlerFunc(app.GetAllUserInfo)
+  handler := http.HandlerFunc(app.getAllUserInfo)
 
   // Our handlers satisfy http.Handler, so we can call their ServeHTTP method
   // directly and pass in our Request and ResponseRecorder.
