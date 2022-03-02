@@ -106,3 +106,40 @@ func (a *App) login(w http.ResponseWriter, r *http.Request) {
 		Secure:   true,
 	})
 }
+
+func (a *App) sign_Up(w http.ResponseWriter, r *http.Request) {
+	// Decode sign_Up info
+	var user1 User
+	err := json.NewDecoder(r.Body).Decode(&user1)
+	if err != nil {
+		http.Error(w, err.Error(), 400)
+		return
+	}
+	// Find if user is in database
+	err = a.db.First(&user1, "email = ?", user1.Login_var.Email).Error
+	if err != nil {
+		http.Error(w, "Invalid email", 400)
+		return
+	}
+
+	result := a.db.Create(&user1) // pass pointer of data to Create
+	if result.Error == nil {
+		http.Error(w, "Invalid entry", 400)
+		return
+	} // returns error
+
+	// Create JWT token and set cookie
+	expirationTime := time.Now().Add(5 * time.Minute)
+	tokenString, err := createToken(user1.Login_var.Username, expirationTime)
+	if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		return
+	}
+	http.SetCookie(w, &http.Cookie{
+		Name:     "token",
+		Value:    tokenString,
+		Expires:  expirationTime,
+		HttpOnly: true,
+		Secure:   true,
+	})
+}

@@ -20,6 +20,7 @@ type User struct {
 	Age        int
 	Occupation string
 	Place_id   int
+	Login_var  Login
 	//Place       Place
 	//Location [2]string
 	//Review   map[string]string
