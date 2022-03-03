@@ -11,6 +11,11 @@
   display: flex;
   flex-direction: column;
 }
+.selection {
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+}
 
 .submitButton {
   background-color: steelblue;
