@@ -26,6 +26,7 @@ func (a *App) start() {
 	a.r.HandleFunc("/getAllUserInfo", a.getAllUserInfo).Methods("GET")
 	a.r.HandleFunc("/getLoginInfo", a.getLoginInfo).Methods("GET")
 	a.r.HandleFunc("/login", a.login).Methods("POST")
+	a.r.HandleFunc("/sign_Up", a.sign_Up).Methods("POST")
 	handle := a.getHandle()
 	log.Fatal(http.ListenAndServe(":8080", handle))
 }
@@ -94,6 +95,43 @@ func (a *App) login(w http.ResponseWriter, r *http.Request) {
 	// Create JWT token and set cookie
 	expirationTime := time.Now().Add(5 * time.Minute)
 	tokenString, err := createToken(user.Username, expirationTime)
+	if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		return
+	}
+	http.SetCookie(w, &http.Cookie{
+		Name:     "token",
+		Value:    tokenString,
+		Expires:  expirationTime,
+		HttpOnly: true,
+		Secure:   true,
+	})
+}
+
+func (a *App) sign_Up(w http.ResponseWriter, r *http.Request) {
+	// Decode sign_Up info
+	var user1 User
+	err := json.NewDecoder(r.Body).Decode(&user1)
+	if err != nil {
+		http.Error(w, err.Error(), 400)
+		return
+	}
+	// Find if user is in database
+	err = a.db.First(&user1.Login_var, "email = ?", user1.Login_var.Email).Error
+	if err != gorm.ErrRecordNotFound {
+		http.Error(w, "Invalid email", 400)
+		return
+	}
+
+	err = a.db.Create(&user1).Error // pass pointer of data to Create
+	if err != nil {
+		http.Error(w, "Invalid entry", 400)
+		return
+	} // returns error
+
+	// Create JWT token and set cookie
+	expirationTime := time.Now().Add(5 * time.Minute)
+	tokenString, err := createToken(user1.Login_var.Username, expirationTime)
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		return
