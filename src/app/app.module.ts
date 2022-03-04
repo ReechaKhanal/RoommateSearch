@@ -24,6 +24,7 @@ import { FooterComponent } from './footer/footer.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { SidebarService } from './navbar/sidebar.service';
 import { MatSelectModule } from '@angular/material/select';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { MatSelectModule } from '@angular/material/select';
     NavbarComponent,
     SignUpComponent,
     EmailFormComponent,
-    FooterComponent
+    FooterComponent,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule,
