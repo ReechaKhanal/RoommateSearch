@@ -8,8 +8,13 @@ type Login struct {
 	gorm.Model
 	Username string
 <<<<<<< HEAD
+<<<<<<< HEAD
 	Email    string
 	Password string
+=======
+	Email    string `json:"email"`
+	Password string `json:"password"`
+>>>>>>> b2a049a6b86c073286afc2b012eacebf3098a461
 =======
 	Email    string `json:"email"`
 	Password string `json:"password"`
@@ -26,6 +31,10 @@ type User struct {
 	Occupation string
 	Place_id   int
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	Login_var  Login
+>>>>>>> b2a049a6b86c073286afc2b012eacebf3098a461
 =======
 	Login_var  Login
 >>>>>>> b2a049a6b86c073286afc2b012eacebf3098a461
