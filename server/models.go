@@ -7,8 +7,13 @@ import (
 type Login struct {
 	gorm.Model
 	Username string
+<<<<<<< HEAD
 	Email    string
 	Password string
+=======
+	Email    string `json:"email"`
+	Password string `json:"password"`
+>>>>>>> b2a049a6b86c073286afc2b012eacebf3098a461
 	User_id  int
 }
 
@@ -20,6 +25,10 @@ type User struct {
 	Age        int
 	Occupation string
 	Place_id   int
+<<<<<<< HEAD
+=======
+	Login_var  Login
+>>>>>>> b2a049a6b86c073286afc2b012eacebf3098a461
 	//Place       Place
 	//Location [2]string
 	//Review   map[string]string

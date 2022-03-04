@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SidebarService } from './sidebar.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private sideNavService: SidebarService) { }
 
   ngOnInit(): void {
+  }
+
+  onProfileClick(){
+    this.sideNavService.toggle();
   }
 
 }

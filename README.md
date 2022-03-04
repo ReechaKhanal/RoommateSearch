@@ -2,10 +2,10 @@
 # RoommateSearch
 
 ## Group Members:
-1. Michael Ivanov
-2. Reecha Khanal
-3. Saksham Nagar
-4. Sukanth Sundaran
+1. Michael Ivanov: [Mivanov9](https://github.com/Mivanov9)
+2. Reecha Khanal : [ReechaKhanal](https://github.com/ReechaKhanal)
+3. Saksham Nagar : [SuperNova104](https://github.com/SuperNova104)
+4. Sukanth Sundaran: [SukanthS](https://github.com/SukanthS)
 
 ## Project Description
 
@@ -15,7 +15,11 @@ Our project aims at helping students or people who have moved to a new town ease
 Front-end: Angular version 11.0.0
 Back-end: Golang 1.17.6
 
+## Sprint One: [Link to Sprint One Information](https://github.com/ReechaKhanal/RoommateSearch/blob/main/Sprint1.md)
+
 ## Development server
+
+Run `go run .` in the `/server` directory for the back-end server. The server will run on `http://localhost:8080` and will be accepting requests.
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
@@ -25,7 +29,9 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Run `ng build` to build the project. The build artifacts will be stored in the `server/static` directory. Use the `--prod` flag for a production build.
+
+Run `go run -tags prod` to run the static build of the website.
 
 ## Running unit tests
 
@@ -38,4 +44,3 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-.

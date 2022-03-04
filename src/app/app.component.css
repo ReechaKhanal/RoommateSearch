@@ -1,7 +1,8 @@
 .title{
   text-align: center;
-  color:rgb(153, 10, 242);
+  color:steelblue;
   font-size:xx-large;
+  z-index: 999;
 }
 
 .example-form {
@@ -11,5 +12,18 @@
 }
 
 .example-full-width {
+  width: 100%;
+}
+
+mat-sidenav-container{
+  height: 100%;
+}
+
+mat-sidenav{
+  background-color: steelblue;
+  width: fit-content;
+}
+
+mat-sidenav-content{
   width: 100%;
 }

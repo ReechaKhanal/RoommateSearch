@@ -14,6 +14,17 @@ import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ChatComponent } from './chat/chat.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { EmailFormComponent } from './email-form/email-form.component';
+import { FooterComponent } from './footer/footer.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { SidebarService } from './navbar/sidebar.service';
+import { MatSelectModule } from '@angular/material/select';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +34,11 @@ import { NavbarComponent } from './navbar/navbar.component';
     LoginComponent,
     ProfileComponent,
     ChatComponent,
-    NavbarComponent
+    NavbarComponent,
+    SignUpComponent,
+    EmailFormComponent,
+    FooterComponent,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -31,9 +46,16 @@ import { NavbarComponent } from './navbar/navbar.component';
     MatCardModule,
     BrowserAnimationsModule,
     MatInputModule,
-    HttpClientModule
+    HttpClientModule,
+    MatButtonModule,
+    MatIconModule,
+    MatToolbarModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatSidenavModule,
+    MatSelectModule
   ],
-  providers: [],
+  providers: [SidebarService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

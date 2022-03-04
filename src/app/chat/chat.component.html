@@ -1,1 +1,20 @@
-<p>chat works!</p>
+<app-navbar></app-navbar>
+<body>
+<mat-sidenav-container class="chat-container">
+  <mat-sidenav class = "chat-history" #sidedrawer mode = "side" opened="">
+    Chat History
+  </mat-sidenav>
+  <mat-sidenav-content class= "chat-content">
+    <p style="border: 2px;background-color: blue;color:white; padding: 15px; margin:0px">Send a Message!</p>
+    <mat-card>
+      <title>User Name</title>
+      <p> Chat Window</p>
+      <div class = "send-message">
+        <input class="send-message-input" placeholder="Enter your message">
+        <button class="send-message-button" mat-button color="primary"> Send </button>
+      </div>
+    </mat-card>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<app-footer></app-footer>
+</body>

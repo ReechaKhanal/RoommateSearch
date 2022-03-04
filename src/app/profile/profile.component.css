@@ -1,0 +1,11 @@
+.card{
+  padding-left: 50px;
+}
+.card-img-top{
+  height: 200px;
+  width: 200px;
+}
+.button{
+  background-color: rgb(0, 140, 255);
+  color: rgb(255, 255, 255);
+}

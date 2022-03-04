@@ -1,1 +1,15 @@
-<p>navbar works!</p>
+<mat-toolbar>
+    <ul class="topnav">
+    <li [routerLinkActive]="['active']">
+      <a mat-button class = 'nav-profile' (click)="onProfileClick()"><mat-icon>person</mat-icon></a>
+    </li>
+    <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+      <a mat-button class = 'nav-home' [routerLink]="['/home']"> <mat-icon>home</mat-icon>  </a>
+    </li>
+    <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+      <a mat-button class = 'nav-chat' [routerLink]="['/chat']"><mat-icon> chat</mat-icon></a>
+    </li>
+    <a class = "about">Homies</a>
+  </ul>
+
+</mat-toolbar>
