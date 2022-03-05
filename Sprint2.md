@@ -16,6 +16,7 @@ Sprint One Board: [https://github.com/users/ReechaKhanal/projects/11](https://gi
         [Issue #54](https://github.com/ReechaKhanal/RoommateSearch/issues/54)
         [Issue #72](https://github.com/ReechaKhanal/RoommateSearch/issues/72)
         [Issue #73](https://github.com/ReechaKhanal/RoommateSearch/issues/73)
+        ![](./Images/Postman_SignUp_Login.gif)
        
  4. Frontend enhancements, navbar, profile sidebar, footer:
 	    [Issue #79](https://github.com/ReechaKhanal/RoommateSearch/issues/79)
