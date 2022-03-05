@@ -1,15 +1,10 @@
 /* You can add global styles to this file, and also import other style files 
 
-<<<<<<< HEAD
+
 /*
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
 
-@import "~bootstrap/dist/css/bootstrap.css"
-=======
-
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
-
 @import "~bootstrap/dist/css/bootstrap.css";
 html, body { height: 100%; }
->>>>>>> 0628129727608c3068f707b20794101d4e82ab12
+
