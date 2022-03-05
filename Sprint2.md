@@ -25,12 +25,21 @@ Backend API Documentation: [[Chick Here]]
 
   4. Enhancement of footer and adding developer Info
         [Issue #79](https://github.com/ReechaKhanal/RoommateSearch/issues/79)
+        
+  5. Cypress Testing for Login Page
+        [Issue #59](https://github.com/ReechaKhanal/RoommateSearch/issues/59)
+        
+  6. Connecting Routes and Enabling functionalities on the homepage
+        [Issue #61](https://github.com/ReechaKhanal/RoommateSearch/issues/61)
+        
+  7. Unit testing and Postman for Signup and Login API
+        [Issue #92](https://github.com/ReechaKhanal/RoommateSearch/issues/92)
+        [Issue #58](https://github.com/ReechaKhanal/RoommateSearch/issues/58)
 
+  
   Cypress Testing for Home Page and Chats Page:
+    ![](./Images/cypress.gif)
   
-  
-    ![](https://user-images.githubusercontent.com/72096084/156862196-22c84989-38f4-449f-b3ab-1329c8dec45c.gif)
-  
-  Postman for Signup and Login Page
+  Postman for Signup and Login Page:
     ![](./Images/Postman_SignUp_Login.gif)
 
