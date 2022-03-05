@@ -2,7 +2,6 @@
 
 Sprint Two Board: [[Click here Sprint Two Issue Boards]](https://github.com/users/ReechaKhanal/projects/11) <br />
 Mock Database Schema Information: [[Link Here]](https://github.com/ReechaKhanal/RoommateSearch/wiki/Database)<br />
-Backend API Documentation: [[Chick Here]]
 
 ## Major Tasks and Accomplishments:
 
@@ -37,15 +36,15 @@ Backend API Documentation: [[Chick Here]]
         [Issue #58](https://github.com/ReechaKhanal/RoommateSearch/issues/58)
 
 
-   Sign-up Page:<br />
+   Sign-up Page:<br/>
    ![](./Images/signup.gif)
    
-   Login and HomePage:<br />
+   Login and HomePage:<br/>
   ![](./Images/login.gif)
   
-  Cypress Testing for Home Page and Chats Page:<br />
+  Cypress Testing for Home Page and Chats Page:<br/>
   ![](./Images/cypress_homepage.gif)
   
-  Postman for Signup and Login Page:<br />
+  Postman for Signup and Login Page:<br/>
   ![](./Images/Postman_SignUp_Login.gif)
 
