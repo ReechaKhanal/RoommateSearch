@@ -37,7 +37,8 @@ export class HomeComponentComponent implements OnInit {
         console.log(this.loadedAllUserInfo);
         console.log(this.allUserInfo);
         },
-      (error) => { console.log('error loading getAllUserInfo data'); }
+      (error) => { console.log('error loading getAllUserInfo data'); 
+      }
     );
   }
 
