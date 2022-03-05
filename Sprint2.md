@@ -6,6 +6,7 @@ Sprint One Board: [https://github.com/users/ReechaKhanal/projects/11](https://gi
 
  1. Setup Frontend Testing using Cypress.io
 		[Issue#59](https://github.com/ReechaKhanal/RoommateSearch/issues/59)
+![cypress](https://user-images.githubusercontent.com/72096084/156862196-22c84989-38f4-449f-b3ab-1329c8dec45c.gif)
 
  2. A functional Map, Profile Page for Frontend
         [Issue #60](https://github.com/ReechaKhanal/RoommateSearch/issues/60)
