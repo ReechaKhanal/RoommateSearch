@@ -25,9 +25,13 @@
     "@types/leaflet.markercluster": "^1.4.6",
     "angular-material": "^1.2.4",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "bootstrap": "^5.1.3",
 =======
 >>>>>>> b2a049a6b86c073286afc2b012eacebf3098a461
+=======
+    "bootstrap": "^5.1.3",
+>>>>>>> 0628129727608c3068f707b20794101d4e82ab12
     "leaflet": "^1.7.1",
     "leaflet-control-geocoder": "^2.3.0",
     "leaflet-geosearch": "^3.6.0",

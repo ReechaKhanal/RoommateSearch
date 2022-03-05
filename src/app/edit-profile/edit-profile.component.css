@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 form {
     border: 30px solid #292929;
   }
@@ -65,3 +66,235 @@ form {
     flex: 1 1 auto;
     text-align: center;
   }
+=======
+textarea {
+    resize: none
+}
+
+input,
+textarea,
+select,
+
+
+ul {
+    padding: 0;
+    margin: 0;
+    list-style: none
+}
+
+
+
+.wrapper {
+    max-width: 100%;
+    height: 100%;
+    margin: auto;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    color: rgb(255, 255, 255);
+}
+
+.userDetails {
+    padding: 10px;
+}
+
+.userPreferences{
+padding: 100px;}
+.individualContributor{
+  
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: 0px;
+  }
+
+.wrapper form {
+    width: 100%;
+    color: #034bf4;
+}
+
+.wizard>.steps .current-info,
+.wizard>.steps .number {
+    display: none
+}
+
+.form-row {
+    margin-bottom: 24px
+}
+
+.form-row label {
+    margin-bottom: 8px;
+    display: block
+}
+
+.form-row.form-group {
+    display: flex
+}
+
+.form-row.form-group .form-holder {
+    width: 50%;
+    margin-right: 21px
+}
+
+.form-row.form-group .form-holder:last-child {
+    margin-right: 0
+}
+
+.form-holder {
+    position: relative
+}
+
+.form-holder i {
+    position: absolute;
+    top: 11px;
+    right: 19px;
+    font-size: 17px;
+    color: rgb(13, 35, 236)
+}
+
+.form-control {
+    height: 42px;
+    border: 5px solid #e6e6e6;
+    background: none;
+    width: 100%;
+    padding: 0 18px
+}
+
+.form-control:focus {
+    border-color: #f3d4b7
+}
+
+.form-control {
+    border-color: #ebebeb;
+    border-radius: 2px;
+    color: #8b95a5;
+    padding: 5px 12px;
+    font-size: 14px;
+    line-height: inherit;
+    -webkit-transition: 0.2s linear;
+    transition: 0.2s linear
+}
+
+
+textarea.form-control {
+    padding-top: 11px;
+    padding-bottom: 11px
+}
+
+.option {
+    color: #999
+}
+
+.actions ul {
+    display: flex;
+    margin-top: 30px;
+    justify-content: space-between
+}
+
+.actions ul.step-last {
+    justify-content: flex-end
+}
+
+.actions ul.step-last li:first-child {
+    display: none
+}
+
+.actions li a {
+    padding: 0;
+    border: none;
+    display: inline-flex;
+    height: 51px;
+    width: 135px;
+    align-items: center;
+    background: #6200EA;
+    cursor: pointer;
+    color: #fff !important;
+    position: relative;
+    padding-left: 41px;
+    text-decoration: none;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    font-weight: 400
+}
+
+.actions li a:before {
+    content: '\f178';
+    position: absolute;
+    top: 15px;
+    right: 41px;
+    color: #fff;
+    font-family: "FontAwesome";
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0)
+}
+
+.actions li a:hover {
+    background: #6200eaba
+}
+
+.actions li a:hover:before {
+    -webkit-animation-name: hvr-icon-wobble-horizontal;
+    animation-name: hvr-icon-wobble-horizontal;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1
+}
+
+.actions li[aria-disabled="true"] a {
+    display: none
+}
+
+.actions li:first-child a {
+    background: #e6e6e6;
+    padding-left: 48px
+}
+
+.actions li:first-child a:before {
+    content: '\f177';
+    left: 26px
+}
+
+.actions li:first-child a:hover {
+    background: #ccc
+}
+
+.actions li:last-child a {
+    padding-left: 29px;
+    width: 167px;
+    font-weight: 400
+}
+
+.actions li:last-child a:before {
+    right: 30px
+}
+
+
+.form-group {
+    margin-bottom: 1rem
+}
+
+
+
+.form-control:focus {
+    border-color: #03A9F4;
+    color: #4d5259;
+    -webkit-box-shadow: 0 0 0 0.1rem rgb(255, 255, 255);
+    box-shadow: 0 0 0 0.1rem rgb(248, 248, 248)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> 0628129727608c3068f707b20794101d4e82ab12
