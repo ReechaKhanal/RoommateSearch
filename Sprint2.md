@@ -27,6 +27,8 @@ Backend API Documentation: [[Chick Here]]
         [Issue #79](https://github.com/ReechaKhanal/RoommateSearch/issues/79)
 
   Cypress Testing for Home Page and Chats Page:
+  
+  
     ![](https://user-images.githubusercontent.com/72096084/156862196-22c84989-38f4-449f-b3ab-1329c8dec45c.gif)
   
   Postman for Signup and Login Page
