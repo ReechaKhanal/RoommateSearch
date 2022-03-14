@@ -23,14 +23,16 @@ export class SignUpComponent implements OnInit {
   constructor(backendService: DbConnectService) {
     this.backendService = backendService;
     this.signUpForm = new FormGroup({
-      email: this.emailFormControl,
       firstName: this.firstNameFormControl,
       lastName: this.lastNameFormControl,
       telephone: this.telephoneFormControl,
-      password: this.passwordFormControl,
       status: this.statusFormControl,
       gender: this.genderFormControl,
-      address: this.addressFormControl
+      address: this.addressFormControl,
+      login_var: new FormGroup({
+        email: this.emailFormControl,
+        password: this.passwordFormControl
+      })
     });
   }
 
@@ -39,15 +41,13 @@ export class SignUpComponent implements OnInit {
   sign_Up(): void {
     console.log(this.signUpForm.value);
     if (this.signUpForm.valid) {
-      this.backendService.sign_Up().subscribe(
+      this.backendService.sign_Up(this.signUpForm.value).subscribe(
         (response) => {
           console.log('response received');
-         
           },
-        (error) => { console.log('error loading sign_Up data'); 
+        (error) => { console.log('error loading sign_Up data');
         }
       );
-      // TODO: send form data to backend server, make a jason file wil all the incoming data
     }
   }
 
