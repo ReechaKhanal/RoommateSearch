@@ -1,23 +1,50 @@
 ## Sprint Two:
 
-Sprint One Board: [https://github.com/users/ReechaKhanal/projects/11](https://github.com/users/ReechaKhanal/projects/11)
+Sprint Two Board: [[Click here Sprint Two Issue Boards]](https://github.com/users/ReechaKhanal/projects/11) <br />
+Mock Database Schema Information: [[Link Here]](https://github.com/ReechaKhanal/RoommateSearch/wiki/Database)<br />
 
 ## Major Tasks and Accomplishments:
 
- 1. Setup Frontend Testing using Cypress.io
-		[Issue#59](https://github.com/ReechaKhanal/RoommateSearch/issues/59)
 
- 2. A functional Map, Profile Page for Frontend
-        [Issue #60](https://github.com/ReechaKhanal/RoommateSearch/issues/60)
-        [Issue #16](https://github.com/ReechaKhanal/RoommateSearch/issues/16)
-
- 3. Login and Signup Functionality
-        [Issue #50](https://github.com/ReechaKhanal/RoommateSearch/issues/50) 
+  1. A functioning Homepage, Edit Profile and Side Navigation bar
+        [Issue #63](https://github.com/ReechaKhanal/RoommateSearch/issues/63)
+        [Issue #56](https://github.com/ReechaKhanal/RoommateSearch/issues/56)
+        [Issue #84](https://github.com/ReechaKhanal/RoommateSearch/issues/84)
+  
+  2. Database Schema Enhancement and Documentation
+        [Issue #39](https://github.com/ReechaKhanal/RoommateSearch/issues/39)
+        [Issue #44](https://github.com/ReechaKhanal/RoommateSearch/issues/44)
+  
+  3. Functioning Login and Signup Page with backend integration
+        [Issue #50](https://github.com/ReechaKhanal/RoommateSearch/issues/50)
         [Issue #54](https://github.com/ReechaKhanal/RoommateSearch/issues/54)
+        [Issue #67](https://github.com/ReechaKhanal/RoommateSearch/issues/67)
+        [Issue #39](https://github.com/ReechaKhanal/RoommateSearch/issues/39)
         [Issue #72](https://github.com/ReechaKhanal/RoommateSearch/issues/72)
-        [Issue #73](https://github.com/ReechaKhanal/RoommateSearch/issues/73)
-       
- 4. Frontend enhancements, navbar, profile sidebar, footer:
-	    [Issue #79](https://github.com/ReechaKhanal/RoommateSearch/issues/79)
-      [Issue #81](https://github.com/ReechaKhanal/RoommateSearch/issues/81)
-      [Issue #84](https://github.com/ReechaKhanal/RoommateSearch/issues/84)
+
+  4. Enhancement of footer and adding developer Info
+        [Issue #79](https://github.com/ReechaKhanal/RoommateSearch/issues/79)
+        
+  5. Cypress Testing for Login Page
+        [Issue #59](https://github.com/ReechaKhanal/RoommateSearch/issues/59)
+        
+  6. Connecting Routes and Enabling functionalities on the homepage
+        [Issue #61](https://github.com/ReechaKhanal/RoommateSearch/issues/61)
+        
+  7. Unit testing and Postman for Signup and Login API
+        [Issue #92](https://github.com/ReechaKhanal/RoommateSearch/issues/92)
+        [Issue #58](https://github.com/ReechaKhanal/RoommateSearch/issues/58)
+
+
+   Sign-up Page:<br/>
+   ![](./Images/signup.gif)
+   
+   Login and HomePage:<br/>
+  ![](./Images/login.gif)
+  
+  Cypress Testing for Home Page and Chats Page:<br/>
+  ![](./Images/cypress_homepage.gif)
+  
+  Postman for Signup and Login Page:<br/>
+  ![](./Images/Postman_SignUp_Login.gif)
+
