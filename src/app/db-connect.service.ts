@@ -5,7 +5,12 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class DbConnectService {
-
+  sign_Up() {
+    console.log('MAKING sign_up HTTP REQUEST');
+    return this.http.post(this.sign_UpUrl,null);
+    //to add jason file as parameter
+  }
+  sign_UpUrl = 'http://localhost:8080/sign_Up';
   getAllUserInfoUrl = 'http://localhost:8080/getAllUserInfo';
 
   constructor(private http:HttpClient) { }
