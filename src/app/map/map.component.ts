@@ -58,21 +58,54 @@ export class MapComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.initMap();
-    let element = Array.from(document.getElementsByClassName('glass') as HTMLCollectionOf<HTMLElement>)[0];
-    if(element.style != null){
-      element.style.width='40vw', element.style.height='2vw', element.style.borderRadius='8px', element.style.paddingLeft='10px';
-      element.style.borderWidth='revert', element.style.borderColor='steelblue', element.style.fontSize='14px';
+
+    let homeMapElement = Array.from(document.getElementsByClassName('app-home') as HTMLCollectionOf<HTMLElement>)[0];
+    if (homeMapElement != null) {
+
+      let element = Array.from(document.getElementsByClassName('glass') as HTMLCollectionOf<HTMLElement>)[0];
+      if(element.style != null){
+        element.style.width='40vw', element.style.height='2vw', element.style.borderRadius='8px', element.style.paddingLeft='10px';
+        element.style.borderWidth='revert', element.style.borderColor='steelblue', element.style.fontSize='14px';
+      }
+
+      let element1 = Array.from(document.getElementsByClassName('leaflet-top leaflet-left') as HTMLCollectionOf<HTMLElement>)[0];
+      if(element1.style != null){
+        element1.style.visibility='HIDDEN';
+      }
+
+      let element2 = Array.from(document.getElementsByClassName('reset') as HTMLCollectionOf<HTMLElement>)[0];
+      if(element2.style != null){
+        element2.style.visibility='HIDDEN';
+      }
+    }else{
+      let element = Array.from(document.getElementsByClassName('glass') as HTMLCollectionOf<HTMLElement>)[0];
+      if(element.style != null){
+        element.style.width='100%', element.style.height='100%', element.style.paddingLeft='10px', element.style.border="None";
+        element.style.fontSize='14px';
+      }
+
+      let element1 = Array.from(document.getElementsByClassName('leaflet-top leaflet-left') as HTMLCollectionOf<HTMLElement>)[0];
+      if(element1.style != null){
+        element1.style.visibility='HIDDEN';
+      }
+
+      let element2 = Array.from(document.getElementsByClassName('reset') as HTMLCollectionOf<HTMLElement>)[0];
+      if(element2.style != null){
+        element2.style.visibility='HIDDEN';
+      }
+
+      let element3 = Array.from(document.getElementsByClassName('map-pin') as HTMLCollectionOf<HTMLElement>)[0];
+      if(element3.style != null){
+        element3.style.visibility='HIDDEN';
+      }
+
+      let element4 = Array.from(document.getElementsByClassName('leaflet-control-container') as HTMLCollectionOf<HTMLElement>)[0];
+      if(element4.style != null){
+        element4.style.width='100%';
+      }
     }
 
-    let element1 = Array.from(document.getElementsByClassName('leaflet-top leaflet-left') as HTMLCollectionOf<HTMLElement>)[0];
-    if(element1.style != null){
-      element1.style.visibility='HIDDEN';
-    }
 
-    let element2 = Array.from(document.getElementsByClassName('reset') as HTMLCollectionOf<HTMLElement>)[0];
-    if(element2.style != null){
-      element2.style.visibility='HIDDEN';
-    }
   }
 
 }
