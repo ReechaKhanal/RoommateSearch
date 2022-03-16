@@ -61,12 +61,14 @@
       <!--- Address --->
       <mat-form-field appearance="fill">
         <mat-label>Address *</mat-label>
+        <app-map></app-map>
         <input type="text" matInput [formControl]="addressFormControl" placeholder="City, State, Zip">
         <mat-hint>Please use destination address</mat-hint>
         <mat-error>
           Address is <strong>required</strong>
         </mat-error>
       </mat-form-field>
+
 
       <!--- Email --->
       <mat-form-field class="email" appearance="fill">
