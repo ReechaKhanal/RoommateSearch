@@ -16,5 +16,16 @@
     </mat-card>
   </mat-sidenav-content>
 </mat-sidenav-container>
+
+<ul id="messages">
+  <li *ngFor="let message of messages">
+      <span [innerHTML]="isSystemMessage(message)"></span>
+  </li>
+</ul>
+<form action="">
+  <input [(ngModel)]="chatBox" [ngModelOptions]="{standalone: true}" autocomplete="off" />
+  <button (click)="send()">Send</button>
+</form>
+
 <app-footer></app-footer>
 </body>
