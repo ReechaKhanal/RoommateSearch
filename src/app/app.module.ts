@@ -26,6 +26,8 @@ import { SidebarService } from './navbar/sidebar.service';
 import { MatSelectModule } from '@angular/material/select';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
+import { SocketService } from "./socket.service";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,7 +57,7 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
     MatSidenavModule,
     MatSelectModule
   ],
-  providers: [SidebarService],
+  providers: [SidebarService, SocketService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
