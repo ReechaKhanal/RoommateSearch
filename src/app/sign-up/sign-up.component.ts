@@ -41,7 +41,9 @@ export class SignUpComponent implements OnInit {
   sign_Up(): void {
     console.log(this.signUpForm.value);
     if (this.signUpForm.valid) {
-      this.backendService.sign_Up(this.signUpForm.value).subscribe(
+      const data: any = this.signUpForm.value;
+      data.name = data.firstName + ' ' + data.lastName;
+      this.backendService.sign_Up(data).subscribe(
         (response) => {
           console.log('response received');
           },
