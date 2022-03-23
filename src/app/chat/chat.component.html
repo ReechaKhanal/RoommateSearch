@@ -1,5 +1,6 @@
 <app-navbar></app-navbar>
 <body>
+
 <mat-sidenav-container class="chat-container">
   <mat-sidenav class = "chat-history" #sidedrawer mode = "side" opened="">
     Chat History
@@ -22,10 +23,8 @@
       <span [innerHTML]="isSystemMessage(message)"></span>
   </li>
 </ul>
-<form action="">
-  <input [(ngModel)]="chatBox" [ngModelOptions]="{standalone: true}" autocomplete="off" />
-  <button (click)="send()">Send</button>
-</form>
+<input [(ngModel)]="chatBox" [ngModelOptions]="{standalone: true}" autocomplete="off" />
+<button (click)="send()">Send</button>
 
 <app-footer></app-footer>
 </body>
