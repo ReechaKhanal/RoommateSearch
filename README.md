@@ -7,6 +7,8 @@
 3. Saksham Nagar : [SuperNova104](https://github.com/SuperNova104)
 4. Sukanth Sundaran: [SukanthS](https://github.com/SukanthS)
 
+All of our group members have contributed to both front-end and back-end. We don't have a strict team division and have been working on tasks in need basis.
+
 ## Project Description
 
 Our project aims at helping students or people who have moved to a new town ease their move process by helping them find roommates and getting used to the new town. Our main feature for this project will be finding roommates based on one's location and other criterias. We want to enable potential-roomates with similar interests to be matched to and contact one another. 
