@@ -28,6 +28,8 @@ export class LoginComponent implements OnInit {
   }
 
   Submit(): void {
+    this.loginForm.controls.email.updateValueAndValidity();
+    this.loginForm.controls.password.updateValueAndValidity();
     console.log(this.loginForm.valid);
     if (this.loginForm.valid) {
       const data: any = this.loginForm.value;
@@ -36,11 +38,10 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['/home']);
           },
           (error) => {
-            this.loginForm.reset();
+            this.loginForm.controls.email.setErrors({invalid: true});
+            this.loginForm.controls.password.setErrors({invalid: true});
           }
       );
-    } else {
-      this.loginForm.reset();
     }
   }
 

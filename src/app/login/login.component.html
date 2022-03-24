@@ -7,7 +7,10 @@
         <mat-form-field appearance="fill">
           <mat-label for="uname">Username</mat-label>
           <input matInput [formControl]="emailFormControl" placeholder="Enter Email" name="uname" required>
-          <mat-error>
+          <mat-error *ngIf="emailFormControl.hasError('required')">
+            Email is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="!emailFormControl.hasError('required') && emailFormControl.hasError('invalid')">
             Email or Password is <strong>invalid</strong>
           </mat-error>
         </mat-form-field>
@@ -17,6 +20,9 @@
           <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
           </button>
+          <mat-error *ngIf="passwordFormControl.hasError('required')">
+            Password is <strong>required</strong>
+          </mat-error>
         </mat-form-field>
         <mat-card-actions>
           <button class = 'submitButton'mat-raised-button type="submit" >Login</button>
