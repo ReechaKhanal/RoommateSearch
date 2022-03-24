@@ -32,6 +32,7 @@ func (a *App) start() {
 	a.r.HandleFunc("/getLoginInfo", a.getLoginInfo).Methods("GET")
 	a.r.HandleFunc("/login", a.login).Methods("POST")
 	a.r.HandleFunc("/sign_Up", a.sign_Up).Methods("POST")
+  a.r.HandleFunc("/upload", a.upload).Methods("POST")
   a.r.HandleFunc("/ws", wsPage)
 
 	handle := a.getHandle()
@@ -155,6 +156,10 @@ func (a *App) sign_Up(w http.ResponseWriter, r *http.Request) {
 		HttpOnly: true,
 		Secure:   true,
 	})
+}
+
+func (a *App) upload(w http.ResponseWriter, r *http.Request){
+  fmt.Println("Upload Method Works");
 }
 
 
