@@ -8,12 +8,17 @@ import { Observable } from 'rxjs';
 export class DbConnectService {
   signUpUrl = 'http://localhost:8080/sign_Up';
   getAllUserInfoUrl = 'http://localhost:8080/getAllUserInfo';
+  loginUrl = 'http://localhost:8080/login';
   constructor(private http: HttpClient) { }
 
   sign_Up(data: any): Observable<object> {
     console.log('MAKING sign_up HTTP REQUEST');
     return this.http.post(this.signUpUrl, data);
-    // to add json file as parameter
+  }
+
+  login(data: any): Observable<object> {
+    console.log('MAKING login HTTP REQUEST');
+    return this.http.post(this.loginUrl, data);
   }
 
   // HTTP request to ask the backend to send all the user information

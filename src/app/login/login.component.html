@@ -6,7 +6,10 @@
       <div class="loginForm">
         <mat-form-field appearance="fill">
           <mat-label for="uname">Username</mat-label>
-          <input matInput [formControl]="usernameFormControl" placeholder="Enter Username" name="uname" required>
+          <input matInput [formControl]="emailFormControl" placeholder="Enter Email" name="uname" required>
+          <mat-error>
+            Email or Password is <strong>invalid</strong>
+          </mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label for="psw">Password</mat-label>
@@ -16,7 +19,7 @@
           </button>
         </mat-form-field>
         <mat-card-actions>
-          <button class = 'submitButton'mat-raised-button type="submit" [routerLink]="['/home']">Login</button>
+          <button class = 'submitButton'mat-raised-button type="submit" >Login</button>
         </mat-card-actions>
       </div>
       <mat-label style="float:left;">
