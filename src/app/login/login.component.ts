@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import { DbConnectService } from '../db-connect.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,12 +10,16 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  usernameFormControl = new FormControl('', [Validators.required]);
+  backendService: DbConnectService;
+  router: Router;
+  emailFormControl = new FormControl('', [Validators.required]);
   passwordFormControl = new FormControl('', [Validators.required]);
   hide = true;
-  constructor() {
+  constructor(backendService: DbConnectService, router: Router) {
+    this.backendService = backendService;
+    this.router = router;
     this.loginForm = new FormGroup({
-      username: this.usernameFormControl,
+      email: this.emailFormControl,
       password: this.passwordFormControl
     });
   }
@@ -22,9 +28,20 @@ export class LoginComponent implements OnInit {
   }
 
   Submit(): void {
-    console.log(this.loginForm.value);
+    this.loginForm.controls.email.updateValueAndValidity();
+    this.loginForm.controls.password.updateValueAndValidity();
+    console.log(this.loginForm.valid);
     if (this.loginForm.valid) {
-      // TODO: send form data to backend server
+      const data: any = this.loginForm.value;
+      this.backendService.login(data).subscribe(
+          (response) => {
+            this.router.navigate(['/home']);
+          },
+          (error) => {
+            this.loginForm.controls.email.setErrors({invalid: true});
+            this.loginForm.controls.password.setErrors({invalid: true});
+          }
+      );
     }
   }
 

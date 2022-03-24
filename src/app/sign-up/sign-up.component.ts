@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import { DbConnectService } from '../db-connect.service';
-
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -11,6 +11,7 @@ import { DbConnectService } from '../db-connect.service';
 export class SignUpComponent implements OnInit {
   backendService: DbConnectService;
   signUpForm: FormGroup;
+  router: Router;
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
   firstNameFormControl = new FormControl('', [Validators.required]);
   lastNameFormControl = new FormControl('', [Validators.required]);
@@ -20,8 +21,9 @@ export class SignUpComponent implements OnInit {
   genderFormControl = new FormControl('', [Validators.required]);
   addressFormControl = new FormControl('', [Validators.required]);
   hide = true;
-  constructor(backendService: DbConnectService) {
+  constructor(backendService: DbConnectService, router: Router) {
     this.backendService = backendService;
+    this.router = router;
     this.signUpForm = new FormGroup({
       firstName: this.firstNameFormControl,
       lastName: this.lastNameFormControl,
@@ -45,9 +47,10 @@ export class SignUpComponent implements OnInit {
       data.name = data.firstName + ' ' + data.lastName;
       this.backendService.sign_Up(data).subscribe(
         (response) => {
-          console.log('response received');
+          this.router.navigate(['/home']);
           },
-        (error) => { console.log('error loading sign_Up data');
+        (error) => {
+          this.signUpForm.get('login_var.email')?.setErrors({emailTaken: true});
         }
       );
     }

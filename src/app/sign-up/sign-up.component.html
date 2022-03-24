@@ -80,6 +80,9 @@
         <mat-error *ngIf="emailFormControl.hasError('required')">
           Email is <strong>required</strong>
         </mat-error>
+        <mat-error *ngIf="emailFormControl.hasError('emailTaken')">
+          Email is taken
+        </mat-error>
       </mat-form-field>
 
       <!--- Password --->
