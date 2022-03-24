@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { DbConnectService } from '../db-connect.service';
 import { Router } from "@angular/router";
+import { flatten } from '@angular/compiler';
 
 
 @Component({
@@ -12,12 +13,17 @@ import { Router } from "@angular/router";
 export class HomeComponentComponent implements OnInit {
 
   backendService: DbConnectService;
+  selectedFile: any;
+
+  base64Image: String = ""
 
   //Loaded Data
   allUserInfo: any;
 
   // Data Load Check Boolean
   loadedAllUserInfo: boolean = false;
+
+  uploadedImage: boolean = false;
 
   constructor(backendService: DbConnectService, private router: Router){
     this.backendService = backendService;
@@ -37,12 +43,41 @@ export class HomeComponentComponent implements OnInit {
         console.log(this.loadedAllUserInfo);
         console.log(this.allUserInfo);
         },
-      (error) => { console.log('error loading getAllUserInfo data'); 
+      (error) => { console.log('error loading getAllUserInfo data');
       }
     );
   }
 
   ngOnInit(): void {
     this.getAllUserInfo()
+  }
+
+  onFileSelected(event: any){
+    console.log(event);
+    this.selectedFile = event.target.files[0];
+
+    if (this.selectedFile) {
+      var reader = new FileReader();
+
+      reader.onload =this._handleReaderLoaded.bind(this);
+      reader.readAsBinaryString(this.selectedFile);
+    }
+  }
+
+  _handleReaderLoaded(readerEvt: any) {
+      var binaryString = readerEvt.target.result;
+      this.base64Image= btoa(binaryString);
+      console.log(this.base64Image);
+  }
+
+  onUpload(){
+    const fd = new FormData();
+    this.backendService.uploadImage(this.base64Image).subscribe(
+        (response) => {
+          console.log('response received: ', response);
+          this.uploadedImage = true;
+        },
+        (error) => { console.log('Error Uploading the Image'); }
+    );
   }
 }
