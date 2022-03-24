@@ -50,7 +50,7 @@ export class SignUpComponent implements OnInit {
           this.router.navigate(['/home']);
           },
         (error) => {
-          this.signUpForm.get('login_var.email')?.reset();
+          this.signUpForm.get('login_var.email')?.setErrors({emailTaken: true});
         }
       );
     }
