@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { DbConnectService } from '../db-connect.service';
 import { Router } from "@angular/router";
-import { flatten } from '@angular/compiler';
-
 
 @Component({
   selector: 'app-home-component',
@@ -68,6 +66,10 @@ export class HomeComponentComponent implements OnInit {
       var binaryString = readerEvt.target.result;
       this.base64Image= btoa(binaryString);
       console.log(this.base64Image);
+
+      var image = new Image();
+      image.src = 'data:image/png;base64,' + this.base64Image;
+      document.body.appendChild(image);
   }
 
   onUpload(){
