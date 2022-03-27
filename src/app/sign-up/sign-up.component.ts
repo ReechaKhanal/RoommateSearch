@@ -11,6 +11,9 @@ import {Router} from '@angular/router';
 export class SignUpComponent implements OnInit {
   backendService: DbConnectService;
   signUpForm: FormGroup;
+  selectedFile: any;
+  base64Image: String = "";
+  uploadedImage: boolean = false; // Boolean value to check if the image was uploaded to the db
   router: Router;
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
   firstNameFormControl = new FormControl('', [Validators.required]);
@@ -54,6 +57,38 @@ export class SignUpComponent implements OnInit {
         }
       );
     }
+  }
+
+  onFileSelected(event: any){
+    console.log(event);
+    this.selectedFile = event.target.files[0];
+
+    if (this.selectedFile) {
+      var reader = new FileReader();
+      reader.onload =this._handleReaderLoaded.bind(this);
+      reader.readAsBinaryString(this.selectedFile);
+    }
+
+    this.backendService.uploadImage(this.base64Image).subscribe(
+      (response) => {
+        console.log('response received: ', response);
+        this.uploadedImage = true;
+      },
+      (error) => { console.log('Error Uploading the Image'); }
+  );
+
+
+  }
+
+  _handleReaderLoaded(readerEvt: any) {
+      var binaryString = readerEvt.target.result;
+      this.base64Image= btoa(binaryString);
+      console.log(this.base64Image);
+
+      // Code to convert base64 string back to image:
+      //var image = new Image();
+      //image.src = 'data:image/png;base64,' + this.base64Image;
+      //document.body.appendChild(image);
   }
 
 }

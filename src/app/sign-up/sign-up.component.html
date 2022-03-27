@@ -1,6 +1,10 @@
 <mat-card class="register">
 
   <mat-card-title class="title">Create an account</mat-card-title>
+
+  <mat-label>Upload Profile Picture: </mat-label>
+  <input type="file" (change)="onFileSelected($event)">
+
   <form [formGroup]="signUpForm" (ngSubmit)="sign_Up()">
     <div class="signUpForm">
       <!--- First name --->
@@ -102,7 +106,6 @@
         </mat-error>
       </mat-form-field>
     </div>
-
     <button class="submitButton" mat-raised-button color="primary">Sign Up</button>
   </form>
   <mat-card-content class="loginLink">

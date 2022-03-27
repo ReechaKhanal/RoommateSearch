@@ -49,37 +49,4 @@ export class HomeComponentComponent implements OnInit {
   ngOnInit(): void {
     this.getAllUserInfo()
   }
-
-  onFileSelected(event: any){
-    console.log(event);
-    this.selectedFile = event.target.files[0];
-
-    if (this.selectedFile) {
-      var reader = new FileReader();
-
-      reader.onload =this._handleReaderLoaded.bind(this);
-      reader.readAsBinaryString(this.selectedFile);
-    }
-  }
-
-  _handleReaderLoaded(readerEvt: any) {
-      var binaryString = readerEvt.target.result;
-      this.base64Image= btoa(binaryString);
-      console.log(this.base64Image);
-
-      var image = new Image();
-      image.src = 'data:image/png;base64,' + this.base64Image;
-      document.body.appendChild(image);
-  }
-
-  onUpload(){
-    const fd = new FormData();
-    this.backendService.uploadImage(this.base64Image).subscribe(
-        (response) => {
-          console.log('response received: ', response);
-          this.uploadedImage = true;
-        },
-        (error) => { console.log('Error Uploading the Image'); }
-    );
-  }
 }
