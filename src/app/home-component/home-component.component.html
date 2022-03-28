@@ -13,7 +13,13 @@
               <div class="subtext"> AGE: {{user.Age}} </div>
               <div class="subtext"> OCCUPATION:{{user.Occupation}} </div>
             </mat-card-subtitle>
-            <img mat-card-lg-image src="../../assets/defaultman.png" alt="default man" >
+            <div *ngIf="user.Image == ''; then thenBlock else elseBlock"></div>
+            <ng-template #thenBlock>
+              <img mat-card-lg-image src="../../assets/defaultman.png" alt="default man" >
+            </ng-template>
+            <ng-template #elseBlock>
+              <img mat-card-lg-image src={{user.Image}} alt="profile image">
+            </ng-template>
           </mat-card-title-group>
           <mat-card-content>
             USER BIO
