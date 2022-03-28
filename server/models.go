@@ -21,6 +21,7 @@ type User struct {
 	Occupation string
 	Image      string
 	Place_id   int
+	Place_var  Place
 	Login_var  Login
 
 	//Place       Place
@@ -41,9 +42,10 @@ type Preferences struct {
 
 type Place struct {
 	gorm.Model
-	Id      int
-	User_id int
-	//Location    [2]string
+	Id          int
+	User_id     int
+	latitude    float32 `sql:"type:decimal(8,6);"`
+	longitude   float32 `sql:"type:decimal(9,6);"`
 	Price       float64
 	Bedrooms    int
 	Description string
