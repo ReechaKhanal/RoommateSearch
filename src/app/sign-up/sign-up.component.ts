@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import { DbConnectService } from '../db-connect.service';
+import {DbConnectService} from '../db-connect.service';
 import {Router} from '@angular/router';
 
 @Component({
@@ -11,9 +11,9 @@ import {Router} from '@angular/router';
 export class SignUpComponent implements OnInit {
   backendService: DbConnectService;
   signUpForm: FormGroup;
-  selectedFile: any;
-  base64Image: String = "";
-  uploadedImage: boolean = false; // Boolean value to check if the image was uploaded to the db
+  selectedFile: File | undefined;
+  fileName = 'example.png';
+  base64Image = '';
   router: Router;
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
   firstNameFormControl = new FormControl('', [Validators.required]);
@@ -48,6 +48,7 @@ export class SignUpComponent implements OnInit {
     if (this.signUpForm.valid) {
       const data: any = this.signUpForm.value;
       data.name = data.firstName + ' ' + data.lastName;
+      data.image = this.base64Image;
       this.backendService.sign_Up(data).subscribe(
         (response) => {
           this.router.navigate(['/home']);
@@ -59,36 +60,44 @@ export class SignUpComponent implements OnInit {
     }
   }
 
-  onFileSelected(event: any){
+  onFileSelected(event: Event): void {
     console.log(event);
-    this.selectedFile = event.target.files[0];
-
+    const target = event.target as HTMLInputElement;
+    const files = target.files as FileList;
+    this.selectedFile = files[0];
     if (this.selectedFile) {
-      var reader = new FileReader();
-      reader.onload =this._handleReaderLoaded.bind(this);
+      this.fileName = this.selectedFile.name;
+      const reader = new FileReader();
+      reader.onload = this._handleReaderLoaded.bind(this);
       reader.readAsBinaryString(this.selectedFile);
     }
-
-    this.backendService.uploadImage(this.base64Image).subscribe(
-      (response) => {
-        console.log('response received: ', response);
-        this.uploadedImage = true;
-      },
-      (error) => { console.log('Error Uploading the Image'); }
-  );
-
-
+    //
+    // this.backendService.uploadImage(this.base64Image).subscribe(
+    //     (response) => {
+    //       console.log('response received: ', response);
+    //       this.uploadedImage = true;
+    //     },
+    //     (error) => {
+    //       console.log('Error Uploading the Image');
+    //     }
+    // );
   }
 
-  _handleReaderLoaded(readerEvt: any) {
-      var binaryString = readerEvt.target.result;
-      this.base64Image= btoa(binaryString);
-      console.log(this.base64Image);
+  _handleReaderLoaded(readerEvt: ProgressEvent<FileReader>): void {
+    const target = readerEvt.target;
+    if (!target) {
+      return;
+    }
+    const binaryString = target.result;
+    if (typeof binaryString === 'string') {
+      this.base64Image = btoa(binaryString);
+    }
+    console.log(this.base64Image);
 
       // Code to convert base64 string back to image:
-      //var image = new Image();
-      //image.src = 'data:image/png;base64,' + this.base64Image;
-      //document.body.appendChild(image);
+      // var image = new Image();
+      // image.src = 'data:image/png;base64,' + this.base64Image;
+      // document.body.appendChild(image);
   }
 
 }

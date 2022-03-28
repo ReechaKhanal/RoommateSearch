@@ -2,9 +2,6 @@
 
   <mat-card-title class="title">Create an account</mat-card-title>
 
-  <mat-label>Upload Profile Picture: </mat-label>
-  <input type="file" (change)="onFileSelected($event)">
-
   <form [formGroup]="signUpForm" (ngSubmit)="sign_Up()">
     <div class="signUpForm">
       <!--- First name --->
@@ -65,7 +62,6 @@
       <!--- Address --->
       <mat-form-field appearance="fill">
         <mat-label>Address *</mat-label>
-        <app-map></app-map>
         <input type="text" matInput [formControl]="addressFormControl" placeholder="City, State, Zip">
         <mat-hint>Please use destination address</mat-hint>
         <mat-error>
@@ -105,6 +101,13 @@
           Password is <strong>required</strong>
         </mat-error>
       </mat-form-field>
+      <mat-label>Upload profile image</mat-label>
+      <div class="selection">
+        <input #profileInput hidden="true" type="file" onclick="this.value=null" (change)="onFileSelected($event)"
+               accept="image/*"/>
+        <button class="imageButton" type="button" mat-flat-button color="primary" (click)="profileInput.click()">Browse...</button>
+        <mat-label>{{fileName}}</mat-label>
+      </div>
     </div>
     <button class="submitButton" mat-raised-button color="primary">Sign Up</button>
   </form>
