@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SidebarService } from '../navbar/sidebar.service';
 
 @Component({
   selector: 'app-profile',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  constructor(private sideNavService: SidebarService) { }
 
   ngOnInit(): void {
+  }
+
+  onUpdatePreferencesClick(){
+    this.sideNavService.toggle()
   }
 
 }

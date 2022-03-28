@@ -35,6 +35,8 @@
           </div>
       </form>
   </div>
-
-  <button type="button" class="btn btn-primary" style="align-items: center;">Save</button>
+  <div class = "buttons">
+    <button mat-button type="button" class="btn btn-primary btn-left" style="align-items: center;" (click)="onBackClicked()">Go Back</button>
+    <button mat-button type="button" class="btn btn-primary btn-right" style="align-items: center;" click="onSaveChanges()">Save Changes</button>
+  </div>
 </body>
