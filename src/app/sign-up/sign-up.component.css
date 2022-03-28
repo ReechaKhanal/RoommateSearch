@@ -23,6 +23,13 @@
   cursor: pointer;
   width: 100%;
 }
+.imageButton {
+  background-color: steelblue;
+  color: white;
+  cursor: pointer;
+  width: fit-content;
+  margin-top: 5px;
+}
 .loginLink {
   float: right;
   margin-top: 16px
