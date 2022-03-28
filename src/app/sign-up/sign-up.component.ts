@@ -65,7 +65,7 @@ export class SignUpComponent implements OnInit {
     const target = event.target as HTMLInputElement;
     const files = target.files as FileList;
     this.selectedFile = files[0];
-    if (this.selectedFile) {
+    if (this.selectedFile !== undefined) {
       this.fileName = this.selectedFile.name;
       const reader = new FileReader();
       reader.onload = this._handleReaderLoaded.bind(this);
@@ -90,7 +90,7 @@ export class SignUpComponent implements OnInit {
     }
     const binaryString = target.result;
     if (typeof binaryString === 'string') {
-      this.base64Image = btoa(binaryString);
+      this.base64Image = 'data:' + this.selectedFile?.type + ';base64,' + btoa(binaryString);
     }
     console.log(this.base64Image);
 

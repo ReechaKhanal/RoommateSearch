@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { DbConnectService } from '../db-connect.service';
-import { Router } from "@angular/router";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-component',
@@ -13,9 +13,7 @@ export class HomeComponentComponent implements OnInit {
   backendService: DbConnectService;
   selectedFile: any;
 
-  base64Image: String = ""
-
-  //Loaded Data
+  // Loaded Data
   allUserInfo: any;
 
   // Data Load Check Boolean
@@ -27,12 +25,12 @@ export class HomeComponentComponent implements OnInit {
     this.backendService = backendService;
   }
 
-  wantToChat(userId: string){
+  wantToChat(userId: string): void{
     console.log('I want to chat with the user:' + userId);
     this.router.navigate(['./chat']);
   }
 
-  getAllUserInfo(){
+  getAllUserInfo(): void{
     this.backendService.getAllUserInfo().subscribe(
       (response) => {
         console.log('response received');
@@ -47,6 +45,6 @@ export class HomeComponentComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getAllUserInfo()
+    this.getAllUserInfo();
   }
 }
