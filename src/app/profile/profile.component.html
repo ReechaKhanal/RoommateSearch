@@ -10,6 +10,8 @@
     <p class="card-text">
       Some Information, and preferences
     </p>
-    <button  mat-button class = "button" [routerLink]="['/edit_profile']">Update preferences</button>
+    <button  mat-button class = "button" [routerLink]="['/edit_profile']" (click)="onUpdatePreferencesClick()">
+      Update preferences
+    </button>
   </div>
 </div>

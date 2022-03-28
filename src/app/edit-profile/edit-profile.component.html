@@ -16,10 +16,13 @@
       </form>
       <mat-card class="individualContributor">
           <img src="../../assets/defaultman.png" class="card-img-top" alt="..."/>
-          <mat-card-content>
-
-          </mat-card-content>
-        </mat-card>
+          <div class="selection">
+            <input #profileInput hidden="true" type="file" onclick="this.value=null" (change)="onFileSelected($event)"
+                   accept="image/*"/>
+            <button class="imageButton" type="button" mat-flat-button color="primary" (click)="profileInput.click()">Browse...</button>
+            <mat-label style="padding-left: 5px;">{{fileName}}</mat-label>
+          </div>
+      </mat-card>
       <form action="">
           <div id="userPreferences">
               <h4></h4>
@@ -35,6 +38,8 @@
           </div>
       </form>
   </div>
-
-  <button type="button" class="btn btn-primary" style="align-items: center;">Save</button>
+  <div class = "buttons">
+    <button mat-button type="button" class="btn btn-primary btn-left" style="align-items: center;" (click)="onBackClicked()">Go Back</button>
+    <button mat-button type="button" class="btn btn-primary btn-right" style="align-items: center;" click="onSaveChanges()">Save Changes</button>
+  </div>
 </body>

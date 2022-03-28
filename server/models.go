@@ -19,6 +19,7 @@ type User struct {
 	Gender     string
 	Age        int
 	Occupation string
+	Image      string
 	Place_id   int
 	Login_var  Login
 
