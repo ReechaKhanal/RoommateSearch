@@ -10,6 +10,7 @@ export class DbConnectService {
   getAllUserInfoUrl = 'http://localhost:8080/getAllUserInfo';
   loginUrl = 'http://localhost:8080/login';
   uploadImageUrl = 'http://localhost:8080/upload';
+  getLoggedInUserUrl = 'http://localhost:8080/getLoggedInUser';
 
   constructor(private http: HttpClient) { }
 
@@ -20,7 +21,7 @@ export class DbConnectService {
 
   login(data: any): Observable<object> {
     console.log('MAKING login HTTP REQUEST');
-    return this.http.post(this.loginUrl, data);
+    return this.http.post(this.loginUrl, data, {withCredentials: true});
   }
 
   // HTTP request to ask the backend to send all the user information
@@ -30,8 +31,13 @@ export class DbConnectService {
     return this.http.get(this.getAllUserInfoUrl);
   }
 
+  getLoggedInUser(): Observable<object> {
+    console.log('MAKING getLoggedInUser HTTP REQUEST');
+    return this.http.get(this.getLoggedInUserUrl, {withCredentials: true});
+  }
+
   uploadImage(data: any): Observable<object> {
-    console.log('Uploading Image to backend')
+    console.log('Uploading Image to backend');
     return this.http.post(this.uploadImageUrl, data);
   }
 }

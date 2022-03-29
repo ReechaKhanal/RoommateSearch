@@ -1,32 +1,37 @@
 <app-navbar></app-navbar>
 <body>
-  <div class = "app-home">
+<div class="app-home">
     <app-map></app-map>
-  </div>
-    <div class = "alluserobjects">
-      <div class = "userobjects" *ngFor="let user of allUserInfo">
-        <mat-card class="user-card">
-          <mat-card-title-group>
-            <mat-card-title>{{user.Name}}</mat-card-title>
-            <mat-card-subtitle>
-              <div class="subtext">GENDER: {{user.Gender}}</div>
-              <div class="subtext"> AGE: {{user.Age}} </div>
-              <div class="subtext"> OCCUPATION:{{user.Occupation}} </div>
-            </mat-card-subtitle>
-            <div *ngIf="user.Image == ''; then thenBlock else elseBlock"></div>
-            <ng-template #thenBlock>
-              <img mat-card-lg-image src="../../assets/defaultman.png" alt="default man" >
-            </ng-template>
-            <ng-template #elseBlock>
-              <img mat-card-lg-image src={{user.Image}} alt="profile image">
-            </ng-template>
-          </mat-card-title-group>
-          <mat-card-content>
-            USER BIO
-          </mat-card-content>
-          <button mat-button color="primary" (click)="wantToChat('UserId')"><mat-icon>chat</mat-icon>Send a message</button>
-        </mat-card>
-      </div>
-    </div>
+</div>
+<div class="alluserobjects">
+    <ng-container *ngFor="let user of allUserInfo">
+        <div class="userobjects" *ngIf="loadedLoggedInUser && (!userLoggedIn || user.Id != loggedInUserInfo.Id)">
+            <mat-card class="user-card">
+                <mat-card-title-group>
+                    <mat-card-title>{{user.Name}}</mat-card-title>
+                    <mat-card-subtitle>
+                        <div class="subtext">GENDER: {{user.Gender}}</div>
+                        <div class="subtext"> AGE: {{user.Age}} </div>
+                        <div class="subtext"> OCCUPATION:{{user.Occupation}} </div>
+                    </mat-card-subtitle>
+                    <div *ngIf="user.Image == ''; then loadDefaultImage else loadImage"></div>
+                    <ng-template #loadDefaultImage>
+                        <img mat-card-lg-image src="../../assets/defaultman.png" alt="default man">
+                    </ng-template>
+                    <ng-template #loadImage>
+                        <img mat-card-lg-image src={{user.Image}} alt="profile image">
+                    </ng-template>
+                </mat-card-title-group>
+                <mat-card-content>
+                    USER BIO
+                </mat-card-content>
+                <button mat-button color="primary" (click)="wantToChat('UserId')">
+                    <mat-icon>chat</mat-icon>
+                    Send a message
+                </button>
+            </mat-card>
+        </div>
+    </ng-container>
+</div>
 </body>
 <app-footer></app-footer>
