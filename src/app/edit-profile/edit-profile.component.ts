@@ -12,6 +12,8 @@ export class EditProfileComponent implements OnInit {
   fileName = 'example.png';
   base64Image = '';
 
+  options: any = ['I Have a Room', 'I need a Room']
+
   constructor(private _location: Location) { }
 
   ngOnInit(): void {

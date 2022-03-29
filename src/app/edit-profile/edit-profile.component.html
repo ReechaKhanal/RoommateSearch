@@ -8,9 +8,19 @@
                   <div class="form-row"> <input type="text" class="form-control" placeholder="Email"> </div>
                   <div class="form-row"> <input type="text" class="form-control" placeholder="Phone number"> </div>
                   <div class="form-row"> <input type="text" class="form-control" placeholder="Street address"> </div>
+                  <div class="form-row"> <input type="text" class="form-control" placeholder="state"> </div>
                   <div class="form-row"> <input type="text" class="form-control" placeholder="country"> </div>
                   <div class="form-row"> <input type="text" class="form-control" placeholder="zip code"> </div>
-                  <div class="form-row" style="margin-bottom: 18px"> <textarea name="" id="" class="form-control" placeholder="Self Description" style="height: 108px"></textarea> </div>
+                  <div class="form-row" style="color: #000;">
+                    <label>Choose One:</label>
+                    <div class="radio" *ngFor="let mtype of options">
+                        <label for="type">
+                          <input type="radio" name="type"
+                            ngModel [value]="mtype">
+                          {{mtype}}
+                        </label>
+                    </div>
+                  </div>
               </section>
           </div>
       </form>
@@ -19,7 +29,7 @@
           <div class="selection">
             <input #profileInput hidden="true" type="file" onclick="this.value=null" (change)="onFileSelected($event)"
                    accept="image/*"/>
-            <button class="imageButton" type="button" mat-flat-button color="primary" (click)="profileInput.click()">Browse...</button>
+            <button class="imageButton" type="button" mat-flat-button color="primary" (click)="profileInput.click()">Change Picture</button>
             <mat-label style="padding-left: 5px;">{{fileName}}</mat-label>
           </div>
       </mat-card>
