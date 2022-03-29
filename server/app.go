@@ -9,9 +9,9 @@ import (
 	"time"
 
 	"github.com/gorilla/mux"
+	"github.com/gorilla/websocket"
+	"github.com/satori/go.uuid"
 	"gorm.io/gorm"
-  "github.com/gorilla/websocket"
-  "github.com/satori/go.uuid"
 )
 
 type App struct {
@@ -25,15 +25,16 @@ func (a *App) start() {
 		panic("Failed to migrate database")
 	}
 
-  go manager.start1()
+	go manager.start1()
 
 	// DB functions
 	a.r.HandleFunc("/getAllUserInfo", a.getAllUserInfo).Methods("GET")
 	a.r.HandleFunc("/getLoginInfo", a.getLoginInfo).Methods("GET")
+	a.r.HandleFunc("/getLoggedInUser", a.getLoggedInUser).Methods("GET")
 	a.r.HandleFunc("/login", a.login).Methods("POST")
 	a.r.HandleFunc("/sign_Up", a.sign_Up).Methods("POST")
-  a.r.HandleFunc("/upload", a.upload).Methods("POST")
-  a.r.HandleFunc("/ws", wsPage)
+	a.r.HandleFunc("/upload", a.upload).Methods("POST")
+	a.r.HandleFunc("/ws", wsPage)
 
 	handle := a.getHandle()
 	log.Fatal(http.ListenAndServe(":8080", handle))
@@ -102,17 +103,15 @@ func (a *App) login(w http.ResponseWriter, r *http.Request) {
 	}
 	// Create JWT token and set cookie
 	expirationTime := time.Now().Add(5 * time.Minute)
-	tokenString, err := createToken(user.Username, expirationTime)
+	tokenString, err := createToken(user.Email, expirationTime)
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		return
 	}
 	http.SetCookie(w, &http.Cookie{
-		Name:     "token",
-		Value:    tokenString,
-		Expires:  expirationTime,
-		HttpOnly: true,
-		Secure:   true,
+		Name:    "token",
+		Value:   tokenString,
+		Expires: expirationTime,
 	})
 }
 
@@ -144,24 +143,46 @@ func (a *App) sign_Up(w http.ResponseWriter, r *http.Request) {
 
 	// Create JWT token and set cookie
 	expirationTime := time.Now().Add(5 * time.Minute)
-	tokenString, err := createToken(user.Login_var.Username, expirationTime)
+	tokenString, err := createToken(user.Login_var.Email, expirationTime)
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		return
 	}
 	http.SetCookie(w, &http.Cookie{
-		Name:     "token",
-		Value:    tokenString,
-		Expires:  expirationTime,
-		HttpOnly: true,
-		Secure:   true,
+		Name:    "token",
+		Value:   tokenString,
+		Expires: expirationTime,
 	})
 }
 
-func (a *App) upload(w http.ResponseWriter, r *http.Request){
-  fmt.Println("Upload Method Works");
+func (a *App) getLoggedInUser(w http.ResponseWriter, r *http.Request) {
+	token, err := VerifyToken(w, r)
+	if err != nil {
+		return
+	}
+	var user User
+	var login Login
+	// Find matching login to token
+	err = a.db.First(&login, "email = ?", token.claims.Username).Error
+	if err != nil {
+		http.Error(w, "Invalid login token", 400)
+	}
+	// Find user associated with login
+	err = a.db.First(&user, "id = ?", login.UserID).Error
+	if err != nil {
+		panic(err)
+	}
+	user.Login_var.Email = login.Email
+	// Encode data into json and respond the request
+	err = json.NewEncoder(w).Encode(user)
+	if err != nil {
+		http.Error(w, err.Error(), 400)
+	}
 }
 
+func (a *App) upload(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("Upload Method Works")
+}
 
 /****************************************CHAT FUNCTIONALITY**********************************************/
 
@@ -170,17 +191,17 @@ func (a *App) upload(w http.ResponseWriter, r *http.Request){
 // clients that have become destroyed and are waiting to be removed,
 // and messages that are to be broadcasted to and from all connected clients.
 type ClientManager struct {
-  clients    map[*Client]bool
-  broadcast  chan []byte
-  register   chan *Client
-  unregister chan *Client
+	clients    map[*Client]bool
+	broadcast  chan []byte
+	register   chan *Client
+	unregister chan *Client
 }
 
 // Each Client has a unique id, a socket connection, and a message waiting to be sent
 type Client struct {
-  id     string
-  socket *websocket.Conn
-  send   chan []byte
+	id     string
+	socket *websocket.Conn
+	send   chan []byte
 }
 
 // To add complexity to the data being passed around, it will be in JSON format.
@@ -188,17 +209,17 @@ type Client struct {
 // With JSON we can have meta and other useful things.
 // Each of our messages will contain information regarding who sent the message, who is receiving the message and the actual content of the message.
 type Message struct {
-  Sender    string `json:"sender,omitempty"`
-  Recipient string `json:"recipient,omitempty"`
-  Content   string `json:"content,omitempty"`
+	Sender    string `json:"sender,omitempty"`
+	Recipient string `json:"recipient,omitempty"`
+	Content   string `json:"content,omitempty"`
 }
 
 // Spinning up a global ClientManager for our application to use
 var manager = ClientManager{
-  broadcast:  make(chan []byte),
-  register:   make(chan *Client),
-  unregister: make(chan *Client),
-  clients:    make(map[*Client]bool),
+	broadcast:  make(chan []byte),
+	register:   make(chan *Client),
+	unregister: make(chan *Client),
+	clients:    make(map[*Client]bool),
 }
 
 // The server will use three goroutines:
@@ -210,30 +231,30 @@ var manager = ClientManager{
 // Starting with the server goroutine we have the following:
 
 func (manager *ClientManager) start1() {
-  for {
-      select {
-          case conn := <-manager.register:
-              manager.clients[conn] = true
-              jsonMessage, _ := json.Marshal(&Message{Content: "/A new socket has connected."})
-              manager.send(jsonMessage, conn)
-          case conn := <-manager.unregister:
-              if _, ok := manager.clients[conn]; ok {
-                  close(conn.send)
-                  delete(manager.clients, conn)
-                  jsonMessage, _ := json.Marshal(&Message{Content: "/A socket has disconnected."})
-                  manager.send(jsonMessage, conn)
-              }
-          case message := <-manager.broadcast:
-              for conn := range manager.clients {
-                  select {
-                    case conn.send <- message:
-                    default:
-                        close(conn.send)
-                        delete(manager.clients, conn)
-                  }
-              }
-      }
-  }
+	for {
+		select {
+		case conn := <-manager.register:
+			manager.clients[conn] = true
+			jsonMessage, _ := json.Marshal(&Message{Content: "/A new socket has connected."})
+			manager.send(jsonMessage, conn)
+		case conn := <-manager.unregister:
+			if _, ok := manager.clients[conn]; ok {
+				close(conn.send)
+				delete(manager.clients, conn)
+				jsonMessage, _ := json.Marshal(&Message{Content: "/A socket has disconnected."})
+				manager.send(jsonMessage, conn)
+			}
+		case message := <-manager.broadcast:
+			for conn := range manager.clients {
+				select {
+				case conn.send <- message:
+				default:
+					close(conn.send)
+					delete(manager.clients, conn)
+				}
+			}
+		}
+	}
 }
 
 // Every time the manager.register channel has data,
@@ -250,11 +271,11 @@ func (manager *ClientManager) start1() {
 // If for some reason the channel is clogged or the message can’t be sent, we assume the client has disconnected and we remove them instead.
 // To save repetitive code, a manager.send method was created to loop through each of the clients:
 func (manager *ClientManager) send(message []byte, ignore *Client) {
-  for conn := range manager.clients {
-      if conn != ignore {
-          conn.send <- message
-      }
-  }
+	for conn := range manager.clients {
+		if conn != ignore {
+			conn.send <- message
+		}
+	}
 }
 
 // We will send data later with conn.send
@@ -262,21 +283,21 @@ func (manager *ClientManager) send(message []byte, ignore *Client) {
 // Now we can explore the goroutine for reading websocket data sent from the clients.
 // The point of this goroutine is to read the socket data and add it to the manager.broadcast for further orchestration.
 func (c *Client) read() {
-  defer func() {
-      manager.unregister <- c
-      c.socket.Close()
-  }()
+	defer func() {
+		manager.unregister <- c
+		c.socket.Close()
+	}()
 
-  for {
-      _, message, err := c.socket.ReadMessage()
-      if err != nil {
-          manager.unregister <- c
-          c.socket.Close()
-          break
-      }
-      jsonMessage, _ := json.Marshal(&Message{Sender: c.id, Content: string(message)})
-      manager.broadcast <- jsonMessage
-  }
+	for {
+		_, message, err := c.socket.ReadMessage()
+		if err != nil {
+			manager.unregister <- c
+			c.socket.Close()
+			break
+		}
+		jsonMessage, _ := json.Marshal(&Message{Sender: c.id, Content: string(message)})
+		manager.broadcast <- jsonMessage
+	}
 }
 
 // If there was an error reading the websocket data it probably means the client has disconnected.
@@ -284,21 +305,21 @@ func (c *Client) read() {
 
 // This is handled in the third goroutine for writing data:
 func (c *Client) write() {
-  defer func() {
-      c.socket.Close()
-  }()
+	defer func() {
+		c.socket.Close()
+	}()
 
-  for {
-      select {
-      case message, ok := <-c.send:
-          if !ok {
-              c.socket.WriteMessage(websocket.CloseMessage, []byte{})
-              return
-          }
+	for {
+		select {
+		case message, ok := <-c.send:
+			if !ok {
+				c.socket.WriteMessage(websocket.CloseMessage, []byte{})
+				return
+			}
 
-          c.socket.WriteMessage(websocket.TextMessage, message)
-      }
-  }
+			c.socket.WriteMessage(websocket.TextMessage, message)
+		}
+	}
 }
 
 // If the c.send channel has data we try to send the message.
@@ -317,16 +338,16 @@ func (c *Client) write() {
 // We start the server on port 12345 and it has a single endpoint which is only accessible via a websocket connection.
 // This endpoint method called wsPage looks like the following:
 func wsPage(res http.ResponseWriter, req *http.Request) {
-  conn, error := (&websocket.Upgrader{CheckOrigin: func(r *http.Request) bool { return true }}).Upgrade(res, req, nil)
-  if error != nil {
-      http.NotFound(res, req)
-      return
-  }
-  client := &Client{id: uuid.NewV4().String(), socket: conn, send: make(chan []byte)}
-  manager.register <- client
+	conn, error := (&websocket.Upgrader{CheckOrigin: func(r *http.Request) bool { return true }}).Upgrade(res, req, nil)
+	if error != nil {
+		http.NotFound(res, req)
+		return
+	}
+	client := &Client{id: uuid.NewV4().String(), socket: conn, send: make(chan []byte)}
+	manager.register <- client
 
-  go client.read()
-  go client.write()
+	go client.read()
+	go client.write()
 }
 
 // The HTTP request is upgraded to a websocket request using the websocket library.
