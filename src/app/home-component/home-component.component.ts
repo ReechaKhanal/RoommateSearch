@@ -15,11 +15,13 @@ export class HomeComponentComponent implements OnInit {
 
   // Loaded Data
   allUserInfo: any;
+  loggedInUserInfo: any;
 
   // Data Load Check Boolean
-  loadedAllUserInfo: boolean = false;
-
-  uploadedImage: boolean = false;
+  loadedAllUserInfo = false;
+  loadedLoggedInUser = false;
+  uploadedImage = false;
+  userLoggedIn = false;
 
   constructor(backendService: DbConnectService, private router: Router){
     this.backendService = backendService;
@@ -44,7 +46,23 @@ export class HomeComponentComponent implements OnInit {
     );
   }
 
+    getLoggedInUser(): void {
+      this.backendService.getLoggedInUser().subscribe(
+          (response) => {
+              this.userLoggedIn = true;
+              this.loggedInUserInfo = response;
+              console.log(this.loggedInUserInfo);
+          },
+          (error) => {
+              console.log('error loading getLoggedInUser data');
+              this.userLoggedIn = false;
+          }
+      );
+      this.loadedLoggedInUser = true;
+    }
+
   ngOnInit(): void {
     this.getAllUserInfo();
+    this.getLoggedInUser();
   }
 }
