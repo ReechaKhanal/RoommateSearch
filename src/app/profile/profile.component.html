@@ -1,15 +1,12 @@
-<div class="card">
-  <h1> Hello User </h1>
+<div class="card" *ngIf="loadedLoggedInUser">
+  <h1> {{loggedInUserInfo.Name}} </h1>
   <img
     src="../../assets/defaultman.png"
     class="card-img-top"
     alt="..."
   />
   <div class="card-body">
-    <h5 class="card-title">First Name, Last Name</h5>
-    <p class="card-text">
-      Some Information, and preferences
-    </p>
+    <h5 class="card-title">{{loggedInUserInfo.Name}}</h5>
     <button  mat-button class = "button" [routerLink]="['/edit_profile']" (click)="onUpdatePreferencesClick()">
       Update preferences
     </button>
