@@ -11,14 +11,11 @@ describe('Startup Roommate Search', () => {
       cy.contains('Password');
 
       // Enter Test User Name
-      cy.get("input[name=uname]").type('Test User', { log: false });
+      cy.get("input[name=uname]").type('test@test.com', { log: false });
       // Enter Password
-      cy.get("input[name=psw]").type('Password', { log: false });
-
+      cy.get("input[name=psw]").type('test123', { log: false });
       // Press Login Button
       cy.get("button[type='submit']").click();
-
-      
 	})
 
   it("Navigation Bar Functionality", () => {
@@ -40,5 +37,4 @@ describe('Startup Roommate Search', () => {
     cy.get('.nav-home').click()
     cy.get('.user-card');
   })
-
 })
