@@ -21,11 +21,29 @@ describe('Test Home Page Functionality', () => {
 
   it("Home Page Functionality", () => {
 
-    // Try out the enter location functionality
+    // Get the location bar and enter the location - University of Florida, Gainesville, Florida
+    cy.get('*[class^="app-home-map"]').type('University of Florida, Gainesville, Florida')
+
+    // wait for 500 milliseconds - give client enough time to load the locations
+    cy.wait(500)
+
+    cy.get('*[class^="results active"]')
+    cy.get('*[data-key^=0]').click()
 
     // Check if the Home Page contains user-cards
+    cy.get('.user-card');
 
+    // Check if the user-cards contain a send a message button
+    cy.get('.user-card').contains('Send a message');
+    cy.get('.sendMessageButton').first().click();
+
+    cy.wait(500)
     // Check if clicking on the send message button from home page takes you to the chat page
+    cy.contains('Chat History');
+
+    // Navigate Back to Home Page
+    cy.get('.nav-home')
+    cy.get('.nav-home').click()
 
   })
 })
