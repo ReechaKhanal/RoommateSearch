@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 <body>
-<div class="app-home">
+<div class="app-home-map">
     <app-map></app-map>
 </div>
 <div class="alluserobjects">
@@ -25,7 +25,7 @@
                 <mat-card-content>
                     USER BIO
                 </mat-card-content>
-                <button mat-button color="primary" (click)="wantToChat('UserId')">
+                <button mat-button color="primary" (click)="wantToChat('UserId')" class ='sendMessageButton'>
                     <mat-icon>chat</mat-icon>
                     Send a message
                 </button>

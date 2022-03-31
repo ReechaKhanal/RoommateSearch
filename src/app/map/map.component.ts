@@ -59,7 +59,7 @@ export class MapComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     this.initMap();
 
-    let homeMapElement = Array.from(document.getElementsByClassName('app-home') as HTMLCollectionOf<HTMLElement>)[0];
+    let homeMapElement = Array.from(document.getElementsByClassName('app-home-map') as HTMLCollectionOf<HTMLElement>)[0];
     if (homeMapElement != null) {
 
       let element = Array.from(document.getElementsByClassName('glass') as HTMLCollectionOf<HTMLElement>)[0];
