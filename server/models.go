@@ -50,6 +50,23 @@ type Place struct {
 	Description string
 }
 
+type Nearby struct{
+	id int
+	Name string
+	latitude    float32 `sql:"type:decimal(8,6);"`
+	longitude   float32 `sql:"type:decimal(9,6);"`
+	Explore_id  int
+}
+
+
+type Explore struct{
+	id int
+	nearby1 Nearby
+	nearby2 Nearby
+	nearby3 Nearby
+	nearby4 Nearby
+}
+
 //func dummySet(db *gorm.DB) {
 //
 //	logins := []Login_var{
