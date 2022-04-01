@@ -35,9 +35,9 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 Run `go run -tags prod` to run the static build of the website.
 
-## Running unit tests
+## Running backend tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Run `go test -run app_test.go` in the `/server` directory
 
 ## Running end-to-end tests
 
