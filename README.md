@@ -19,7 +19,7 @@ Back-end: Golang 1.17.6
 
 ## Sprint One: [Link to Sprint One Information](https://github.com/ReechaKhanal/RoommateSearch/blob/main/Sprint1.md)
 ## Sprint Two: [Link to Sprint Two Information](https://github.com/ReechaKhanal/RoommateSearch/blob/main/Sprint2.md)
-## Sprint Two: [Link to Sprint Two Information](https://github.com/ReechaKhanal/RoommateSearch/blob/main/Sprint3.md)
+## Sprint Two: [Link to Sprint Three Information](https://github.com/ReechaKhanal/RoommateSearch/blob/main/Sprint3.md)
 
 ## Development server
 
