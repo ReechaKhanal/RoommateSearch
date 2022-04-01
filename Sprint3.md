@@ -25,3 +25,9 @@ Routing and API Information:  [[Link Here]](https://github.com/ReechaKhanal/Room
 4. Adding Images to the database (profile picture and other pictures):
 [Issue #133](https://github.com/ReechaKhanal/RoommateSearch/issues/133)
 [Issue #145](https://github.com/ReechaKhanal/RoommateSearch/issues/145)
+
+ Postman :<br/>
+  ![](./Images/Postman_WS_Chat.gif)
+  
+ Postman :<br/>
+  ![](./Images/Postman_session_token.gif)
