@@ -7,7 +7,10 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "e2e": "concurrently \"npm run start\" \"cd ./server && go run .\" \"wait-on http-get://localhost:4200 && npm run cy:run\" --kill-others --success first",
+    "e2e-gui": "concurrently \"npm run start\" \"wait-on http-get://localhost:4200 && npm run cy:open\" --kill-others --success first"
   },
   "private": true,
   "dependencies": {
@@ -41,6 +44,7 @@
     "@types/leaflet": "^1.7.8",
     "@types/node": "^12.11.1",
     "codelyzer": "^6.0.0",
+    "concurrently": "^7.1.0",
     "cypress": "^9.5.1",
     "jasmine-core": "~3.8.0",
     "jasmine-spec-reporter": "~5.0.0",
@@ -52,6 +56,7 @@
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
-    "typescript": "~4.0.2"
+    "typescript": "~4.0.2",
+    "wait-on": "^6.0.1"
   }
 }
