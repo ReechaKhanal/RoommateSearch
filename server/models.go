@@ -12,6 +12,8 @@ type Login struct {
 	UserID   int
 }
 
+
+
 type User struct {
 	gorm.Model
 	Id         int
@@ -20,12 +22,24 @@ type User struct {
 	Age        int
 	Occupation string
 	Image      string
-	Place_var  Place
+	Place   Place
 	Login_var  Login
+	Email      string
+	PhNumber   int
+	HasPlace   bool
+	Review     Review
+	Preferences_var Preferences
 
 	//Place       Place
 	//Location [2]string
 	//Review   map[string]string
+}
+
+type Review struct {
+	gorm.Model
+	cleanliness int
+	studious int
+	friendliness int
 }
 
 type Preferences struct {
@@ -35,6 +49,7 @@ type Preferences struct {
 	Drinking   bool
 	Smoking    bool
 	Quite_time string
+	Bed_time   string
 	Pets       bool
 	Occupation string
 }
@@ -42,30 +57,17 @@ type Preferences struct {
 type Place struct {
 	gorm.Model
 	Id          int
-	UserID      int
+	Name        string
+	Images      string
 	latitude    float32 `sql:"type:decimal(8,6);"`
 	longitude   float32 `sql:"type:decimal(9,6);"`
 	Price       float64
 	Bedrooms    int
 	Description string
-}
 
-type Nearby struct{
-	id int
-	Name string
-	latitude    float32 `sql:"type:decimal(8,6);"`
-	longitude   float32 `sql:"type:decimal(9,6);"`
-	Explore_id  int
 }
 
 
-type Explore struct{
-	id int
-	nearby1 Nearby
-	nearby2 Nearby
-	nearby3 Nearby
-	nearby4 Nearby
-}
 
 //func dummySet(db *gorm.DB) {
 //
