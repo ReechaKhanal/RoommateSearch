@@ -12,22 +12,20 @@ type Login struct {
 	UserID   int
 }
 
-
-
 type User struct {
 	gorm.Model
-	Id         int
-	Name       string
-	Gender     string
-	Age        int
-	Occupation string
-	Image      string
-	Place   Place
-	Login_var  Login
-	Email      string
-	PhNumber   int
-	HasPlace   bool
-	Review     Review
+	Id              int
+	Name            string
+	Gender          string
+	Age             int
+	Occupation      string
+	Image           string
+	Place           Place
+	Login_var       Login
+	Email           string
+	PhNumber        int
+	HasPlace        bool
+	Review          Review
 	Preferences_var Preferences
 
 	//Place       Place
@@ -37,9 +35,10 @@ type User struct {
 
 type Review struct {
 	gorm.Model
-	cleanliness int
-	studious int
+	cleanliness  int
+	studious     int
 	friendliness int
+	UserID       int
 }
 
 type Preferences struct {
@@ -64,10 +63,8 @@ type Place struct {
 	Price       float64
 	Bedrooms    int
 	Description string
-
+	UserID      int
 }
-
-
 
 //func dummySet(db *gorm.DB) {
 //
