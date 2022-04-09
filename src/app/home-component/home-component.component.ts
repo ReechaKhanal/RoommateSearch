@@ -27,9 +27,9 @@ export class HomeComponentComponent implements OnInit {
     this.backendService = backendService;
   }
 
-  wantToChat(userId: string): void{
-    console.log('I want to chat with the user:' + userId);
-    this.router.navigate(['./chat']);
+  wantToChat(user: any): void{
+    console.log('I want to chat with the user:' + user.Name);
+    this.router.navigate(['./chat'], {queryParams: user});
   }
 
   getAllUserInfo(): void{
