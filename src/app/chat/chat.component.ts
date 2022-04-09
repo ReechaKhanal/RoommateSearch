@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { SocketService } from "../socket.service";
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-chat',
@@ -12,8 +13,11 @@ export class ChatComponent implements OnInit, OnDestroy {
   messages: Array<any>;
   chatBox: string;
 
+  userSentName: string | undefined;
+  userSentId: any;
+
   // In the constructor method we inject our provider and intialize our public variables that are bound to the UI
-  constructor(private socket: SocketService) {
+  constructor(private socket: SocketService, private route: ActivatedRoute, private router: Router ) {
     this.messages = [];
     this.chatBox = "";
   }
@@ -40,6 +44,13 @@ export class ChatComponent implements OnInit, OnDestroy {
         if(event.type == "open") {
             this.messages.push("/The socket connection has been established");
         }
+    });
+
+    this.route.queryParams.subscribe(params => {
+
+      this.userSentName = params.userName;
+      this.userSentId = params.userId;
+      console.log(this.userSentId, this.userSentName);
     });
   }
 
