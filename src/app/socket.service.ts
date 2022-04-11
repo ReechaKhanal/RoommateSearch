@@ -24,7 +24,7 @@ export class SocketService {
   }
 
   // The send method will allow us to send messages to the Golang application
-  public send(data: string) {
+  public send(data: string, userId: any) {
       this.socket.send(data);
   }
 

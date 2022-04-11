@@ -61,7 +61,8 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   send() {
     if(this.chatBox) {
-        this.socket.send(this.chatBox);
+        this.socket.send(this.chatBox, this.userSentId);
+        console.log('This message is directed to ', this.userSentId, this.userSentName);
         this.chatBox = "";
     }
   }
