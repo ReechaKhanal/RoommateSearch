@@ -192,17 +192,17 @@ func (a *App) upload(w http.ResponseWriter, r *http.Request) {
 // clients that have become destroyed and are waiting to be removed,
 // and messages that are to be broadcasted to and from all connected clients.
 type ClientManager struct {
-	clients    map[*Client]bool
-	broadcast  chan []byte
-	register   chan *Client
-	unregister chan *Client
+	clients    map[*Client]bool // all connected clients
+	broadcast  chan []byte // messages that are to be broadcasted from and to all connected clients
+	register   chan *Client // clients trying to be registered
+	unregister chan *Client // clients trying to be unregistered/removed
 }
 
 // Each Client has a unique id, a socket connection, and a message waiting to be sent
 type Client struct {
-	id     string
-	socket *websocket.Conn
-	send   chan []byte
+	id     string // client ID
+	socket *websocket.Conn // the connection socket
+	send   chan []byte // message to send
 }
 
 // To add complexity to the data being passed around, it will be in JSON format.
@@ -273,13 +273,6 @@ func (manager *ClientManager) start1() {
 // If for some reason the channel is clogged or the message can’t be sent, we assume the client has disconnected and we remove them instead.
 // To save repetitive code, a manager.send method was created to loop through each of the clients:
 func (manager *ClientManager) send(message []byte, ignore *Client) {
-  fmt.Println(message)
-  // var index = strings.LastIndex(message, " ")
-  // message = message[0: index]
-  // var userId = message[index+1:]
-
-  // fmt.Println(message);
-  // fmt.Println(userId);
 
 	for conn := range manager.clients {
 		if conn != ignore {
@@ -306,17 +299,19 @@ func (c *Client) read() {
 			break
 		}
 
+    // Added code to strip user_id out of the sent message
 		var stringMessage = string(message)
 		stringMessage = strings.TrimSpace(stringMessage)
 		var index = strings.LastIndex(stringMessage, " ")
 		stringMessage = stringMessage[0: index]
 		var userId = stringMessage[index:]
+    // End of Added code to strip user_id out of the sent message
 
-		fmt.Println("Printing the extracted values from our messages")
-		fmt.Println(stringMessage)
-		fmt.Println(userId)
+		// fmt.Println("Printing the extracted values from our messages")
+		// fmt.Println(stringMessage)
+		// fmt.Println(userId)
 
-		jsonMessage, _ := json.Marshal(&Message{Sender: c.id, Content: string(message)})
+		jsonMessage, _ := json.Marshal(&Message{Sender: c.id, Content: string(message), Recipient: userId})
 		manager.broadcast <- jsonMessage
 	}
 }
@@ -347,14 +342,7 @@ func (c *Client) write() {
 // If for some reason the channel is not alright, we will send a disconnect message to the client.
 
 // To start with each of these goroutines. The server goroutine will be started when we start our server and each of the other goroutines will start when someone connects.
-// For example, check out the main function:
-// func main() {
-//   fmt.Println("Starting application...")
-//   go manager.start()
-//   http.HandleFunc("/ws", wsPage)
-//   http.ListenAndServe(":12345", nil)
-// }
-// Above code is added to the main function
+// code is added to the start function in app.go
 
 // We start the server on port 8080 and it has a single endpoint which is only accessible via a websocket connection.
 // This endpoint method called wsPage looks like the following:
@@ -364,6 +352,7 @@ func wsPage(res http.ResponseWriter, req *http.Request) {
 		http.NotFound(res, req)
 		return
 	}
+  // This is where we are creating client_id for a client
 	client := &Client{id: uuid.NewV4().String(), socket: conn, send: make(chan []byte)}
 	manager.register <- client
 
@@ -375,3 +364,5 @@ func wsPage(res http.ResponseWriter, req *http.Request) {
 // By adding a CheckOrigin we can accept requests from outside domains eliminating cross origin resource sharing (CORS) errors.
 // When a connection is made, a client is created and a unique id is generated.
 //This client is registered to the server as seen previously. After client registration, the read and write goroutines are triggered.
+
+/****************************************END OF CHAT FUNCTIONALITY**********************************************/
