@@ -25,7 +25,7 @@ export class SocketService {
 
   // The send method will allow us to send messages to the Golang application
   public send(data: string, userId: any) {
-      this.socket.send(data);
+      this.socket.send(data + " " + userId);
   }
 
   // The close method will allow us to tell the Golang application that we are no longer connected.
