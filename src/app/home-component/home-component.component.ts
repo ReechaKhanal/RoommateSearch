@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
 import { DbConnectService } from '../db-connect.service';
 import { Router } from '@angular/router';
 
@@ -46,20 +45,20 @@ export class HomeComponentComponent implements OnInit {
     );
   }
 
-    getLoggedInUser(): void {
-      this.backendService.getLoggedInUser().subscribe(
-          (response) => {
-              this.userLoggedIn = true;
-              this.loggedInUserInfo = response;
-              console.log(this.loggedInUserInfo);
-          },
-          (error) => {
-              console.log('error loading getLoggedInUser data');
-              this.userLoggedIn = false;
-          }
-      );
-      this.loadedLoggedInUser = true;
-    }
+  getLoggedInUser(): void {
+    this.backendService.getLoggedInUser().subscribe(
+        (response) => {
+            this.userLoggedIn = true;
+            this.loggedInUserInfo = response;
+            console.log(this.loggedInUserInfo);
+        },
+        (error) => {
+            console.log('error loading getLoggedInUser data');
+            this.userLoggedIn = false;
+        }
+    );
+    this.loadedLoggedInUser = true;
+  }
 
   ngOnInit(): void {
     this.getAllUserInfo();
