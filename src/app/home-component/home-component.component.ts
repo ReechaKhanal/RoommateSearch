@@ -28,8 +28,13 @@ export class HomeComponentComponent implements OnInit {
   }
 
   wantToChat(user: any): void{
-    console.log('I want to chat with the user:' + user.Name);
-    this.router.navigate(['./chat'], {queryParams: {userId: user.Id, userName: user.Name}});
+    if(this.userLoggedIn == true){
+      console.log('I want to chat with the user:' + user.Name);
+      this.router.navigate(['./chat'], {queryParams: {userId: user.Id, userName: user.Name}});
+    }
+    else{
+      console.log('You should be logged in to chat');
+    }
   }
 
   getAllUserInfo(): void{
