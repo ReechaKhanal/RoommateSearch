@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+  "strings"
 	"log"
 	"net/http"
 	"strconv"
@@ -245,6 +246,7 @@ func (manager *ClientManager) start1() {
 				manager.send(jsonMessage, conn)
 			}
 		case message := <-manager.broadcast:
+      // Looks like this is the place where messages are being sent from
 			for conn := range manager.clients {
 				select {
 				case conn.send <- message:
@@ -271,6 +273,14 @@ func (manager *ClientManager) start1() {
 // If for some reason the channel is clogged or the message can’t be sent, we assume the client has disconnected and we remove them instead.
 // To save repetitive code, a manager.send method was created to loop through each of the clients:
 func (manager *ClientManager) send(message []byte, ignore *Client) {
+  fmt.Println(message)
+  // var index = strings.LastIndex(message, " ")
+  // message = message[0: index]
+  // var userId = message[index+1:]
+
+  // fmt.Println(message);
+  // fmt.Println(userId);
+
 	for conn := range manager.clients {
 		if conn != ignore {
 			conn.send <- message
@@ -295,6 +305,17 @@ func (c *Client) read() {
 			c.socket.Close()
 			break
 		}
+
+		var stringMessage = string(message)
+		stringMessage = strings.TrimSpace(stringMessage)
+		var index = strings.LastIndex(stringMessage, " ")
+		stringMessage = stringMessage[0: index]
+		var userId = stringMessage[index:]
+
+		fmt.Println("Printing the extracted values from our messages")
+		fmt.Println(stringMessage)
+		fmt.Println(userId)
+
 		jsonMessage, _ := json.Marshal(&Message{Sender: c.id, Content: string(message)})
 		manager.broadcast <- jsonMessage
 	}
@@ -335,7 +356,7 @@ func (c *Client) write() {
 // }
 // Above code is added to the main function
 
-// We start the server on port 12345 and it has a single endpoint which is only accessible via a websocket connection.
+// We start the server on port 8080 and it has a single endpoint which is only accessible via a websocket connection.
 // This endpoint method called wsPage looks like the following:
 func wsPage(res http.ResponseWriter, req *http.Request) {
 	conn, error := (&websocket.Upgrader{CheckOrigin: func(r *http.Request) bool { return true }}).Upgrade(res, req, nil)
