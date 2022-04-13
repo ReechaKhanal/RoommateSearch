@@ -23,7 +23,7 @@ type User struct {
 	Place           Place
 	Login_var       Login
 	Email           string
-	PhNumber        int
+	PhNumber        string
 	HasPlace        bool
 	Review          Review
 	Preferences_var Preferences
