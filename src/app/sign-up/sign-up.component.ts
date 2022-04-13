@@ -30,8 +30,8 @@ export class SignUpComponent implements OnInit {
     this.signUpForm = new FormGroup({
       firstName: this.firstNameFormControl,
       lastName: this.lastNameFormControl,
-      telephone: this.telephoneFormControl,
-      status: this.statusFormControl,
+      phNumber: this.telephoneFormControl,
+      hasPlace: this.statusFormControl,
       gender: this.genderFormControl,
       address: this.addressFormControl,
       login_var: new FormGroup({

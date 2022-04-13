@@ -37,8 +37,8 @@
         <mat-form-field appearance="fill">
           <mat-label>Room Status *</mat-label>
           <mat-select matInput [formControl]="statusFormControl">
-            <mat-option value="have">I <strong>have</strong> a room</mat-option>
-            <mat-option value="need">I <strong>need</strong> a room</mat-option>
+            <mat-option [value]="true">I <strong>have</strong> a room</mat-option>
+            <mat-option [value]="false">I <strong>need</strong> a room</mat-option>
           </mat-select>
           <mat-error>
             Please choose an option
