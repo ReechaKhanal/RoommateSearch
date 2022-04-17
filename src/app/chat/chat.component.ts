@@ -51,9 +51,7 @@ export class ChatComponent implements OnInit, OnDestroy {
 
       this.userSentName = params.userName;
       this.userSentId = params.userId;
-      this.currentuserId = params.myuserId;
       console.log("User, the message is directed to: ", this.userSentId, this.userSentName);
-      console.log("Current User ID: ", this.currentuserId);
     });
   }
 
