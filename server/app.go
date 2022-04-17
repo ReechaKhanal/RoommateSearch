@@ -307,10 +307,6 @@ func (c *Client) read() {
 		var userId = stringMessage[index:]
     // End of Added code to strip user_id out of the sent message
 
-		// fmt.Println("Printing the extracted values from our messages")
-		// fmt.Println(stringMessage)
-		// fmt.Println(userId)
-
 		jsonMessage, _ := json.Marshal(&Message{Sender: c.id, Content: string(message), Recipient: userId})
 		manager.broadcast <- jsonMessage
 	}
@@ -353,6 +349,7 @@ func wsPage(res http.ResponseWriter, req *http.Request) {
 		return
 	}
   // This is where we are creating client_id for a client
+  // AIM: to send user-id from the front-end and use the same thing as a client-id
 	client := &Client{id: uuid.NewV4().String(), socket: conn, send: make(chan []byte)}
 	manager.register <- client
 
