@@ -1,19 +1,24 @@
-import {AfterViewInit, Component} from '@angular/core';
+import {AfterViewInit, Component, Input, Output, ViewEncapsulation} from '@angular/core';
 import { LocationIQProvider } from 'leaflet-geosearch';
-import {FormControl} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import { RawResult } from 'leaflet-geosearch/dist/providers/openStreetMapProvider';
 import { SearchResult } from 'leaflet-geosearch/dist/providers/provider';
 import {debounceTime} from 'rxjs/operators';
+import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 
 @Component({
   selector: 'app-location-search',
   templateUrl: './location-search.component.html',
-  styleUrls: ['./location-search.component.css']
+  styleUrls: ['./location-search.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class LocationSearchComponent implements AfterViewInit {
   myProvider: LocationIQProvider | undefined;
-  filteredOptions: any;
-  searchFormControl = new FormControl('');
+  filteredOptions: Promise<SearchResult<RawResult>[]> | undefined;
+  @Input()
+  parentFormGroup: FormGroup | undefined;
+  searchFormControl = new FormControl('', [Validators.required]);
+  selectedAddress: SearchResult<RawResult> | undefined;
 
   constructor() {
   }
@@ -32,16 +37,17 @@ export class LocationSearchComponent implements AfterViewInit {
           this.showOptions(searchTerm);
         }
     );
+    this.parentFormGroup?.addControl('address' , this.searchFormControl);
   }
 
   showOptions(searchTerm: string): void {
     this.filteredOptions = this.search(searchTerm);
   }
 
-  async search(searchTerm: string): Promise<string[]> {
+  async search(searchTerm: string): Promise<SearchResult<RawResult>[]> {
     const labels: string[] = [];
     if (this.myProvider === undefined) {
-      return labels;
+      throw Error;
     }
     let results: SearchResult<RawResult>[];
     try {
@@ -50,10 +56,17 @@ export class LocationSearchComponent implements AfterViewInit {
       console.log(e);
       return [];
     }
-    for (const result of results) {
-      labels.push(result.label);
-    }
-    return labels;
+    return results;
   }
 
+  displayFn(value: SearchResult<RawResult>): string {
+    if (value) {
+      return value.label;
+    }
+    return '';
+  }
+
+  onSelected($event: MatAutocompleteSelectedEvent): void {
+    this.selectedAddress =  $event.option.value;
+  }
 }

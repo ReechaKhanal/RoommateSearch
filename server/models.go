@@ -58,8 +58,8 @@ type Place struct {
 	Id          int
 	Name        string
 	Images      string
-	latitude    float32 `sql:"type:decimal(8,6);"`
-	longitude   float32 `sql:"type:decimal(9,6);"`
+	Latitude    float32 `sql:"type:decimal(8,6);"`
+	Longitude   float32 `sql:"type:decimal(9,6);"`
 	Price       float64
 	Bedrooms    int
 	Description string

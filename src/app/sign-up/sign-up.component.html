@@ -60,15 +60,7 @@
         </mat-form-field>
       </div>
       <!--- Address --->
-      <mat-form-field appearance="fill">
-        <mat-label>Address *</mat-label>
-        <input type="text" matInput [formControl]="addressFormControl" placeholder="City, State, Zip">
-        <mat-hint>Please use destination address</mat-hint>
-        <mat-error>
-          Address is <strong>required</strong>
-        </mat-error>
-      </mat-form-field>
-
+      <app-location-search class="location-search" [parentFormGroup]="signUpForm"></app-location-search>
 
       <!--- Email --->
       <mat-form-field class="email" appearance="fill">

@@ -6,7 +6,7 @@ import {Router} from '@angular/router';
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.css']
+  styleUrls: ['./sign-up.component.css'],
 })
 export class SignUpComponent implements OnInit {
   backendService: DbConnectService;
@@ -22,7 +22,6 @@ export class SignUpComponent implements OnInit {
   passwordFormControl = new FormControl('', [Validators.required, Validators.minLength(5)]);
   statusFormControl = new FormControl('', [Validators.required]);
   genderFormControl = new FormControl('', [Validators.required]);
-  addressFormControl = new FormControl('', [Validators.required]);
   hide = true;
   constructor(backendService: DbConnectService, router: Router) {
     this.backendService = backendService;
@@ -33,7 +32,6 @@ export class SignUpComponent implements OnInit {
       phNumber: this.telephoneFormControl,
       hasPlace: this.statusFormControl,
       gender: this.genderFormControl,
-      address: this.addressFormControl,
       login_var: new FormGroup({
         email: this.emailFormControl,
         password: this.passwordFormControl
@@ -49,6 +47,13 @@ export class SignUpComponent implements OnInit {
       const data: any = this.signUpForm.value;
       data.name = data.firstName + ' ' + data.lastName;
       data.image = this.base64Image;
+      // Check if user selected an option
+      if (data.address !== String) {
+        data.place = {};
+        data.place.name = data.address.label;
+        data.place.latitude = data.address.x;
+        data.place.longitude = data.address.y;
+      }
       this.backendService.sign_Up(data).subscribe(
         (response) => {
           this.router.navigate(['/home']);
@@ -71,16 +76,6 @@ export class SignUpComponent implements OnInit {
       reader.onload = this._handleReaderLoaded.bind(this);
       reader.readAsBinaryString(this.selectedFile);
     }
-    //
-    // this.backendService.uploadImage(this.base64Image).subscribe(
-    //     (response) => {
-    //       console.log('response received: ', response);
-    //       this.uploadedImage = true;
-    //     },
-    //     (error) => {
-    //       console.log('Error Uploading the Image');
-    //     }
-    // );
   }
 
   _handleReaderLoaded(readerEvt: ProgressEvent<FileReader>): void {
