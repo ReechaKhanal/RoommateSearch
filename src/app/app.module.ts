@@ -27,6 +27,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 import { SocketService } from "./socket.service";
+import { LocationSearchComponent } from './location-search/location-search.component';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [
@@ -40,23 +42,25 @@ import { SocketService } from "./socket.service";
     SignUpComponent,
     EmailFormComponent,
     FooterComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    LocationSearchComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    MatCardModule,
-    BrowserAnimationsModule,
-    MatInputModule,
-    HttpClientModule,
-    MatButtonModule,
-    MatIconModule,
-    MatToolbarModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatSidenavModule,
-    MatSelectModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        MatCardModule,
+        BrowserAnimationsModule,
+        MatInputModule,
+        HttpClientModule,
+        MatButtonModule,
+        MatIconModule,
+        MatToolbarModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatSidenavModule,
+        MatSelectModule,
+        MatAutocompleteModule
+    ],
   providers: [SidebarService, SocketService],
   bootstrap: [AppComponent]
 })
