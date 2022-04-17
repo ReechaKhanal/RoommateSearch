@@ -51,8 +51,8 @@ export class SignUpComponent implements OnInit {
       if (data.address !== String) {
         data.place = {};
         data.place.name = data.address.label;
-        data.place.latitude = data.address.x;
-        data.place.longitude = data.address.y;
+        data.place.latitude = data.address.y;
+        data.place.longitude = data.address.x;
       }
       this.backendService.sign_Up(data).subscribe(
         (response) => {
