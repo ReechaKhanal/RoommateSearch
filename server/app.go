@@ -11,8 +11,9 @@ import (
 
 	"github.com/gorilla/mux"
 	"github.com/gorilla/websocket"
-	"github.com/satori/go.uuid"
+//	"github.com/satori/go.uuid"
 	"gorm.io/gorm"
+	"gorm.io/driver/sqlite"
 )
 
 type App struct {
@@ -179,6 +180,26 @@ func (a *App) getLoggedInUser(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		http.Error(w, err.Error(), 400)
 	}
+}
+
+func (a *App) getCurrentUserId(w http.ResponseWriter, r *http.Request) int{
+  token, err := VerifyToken(w, r)
+	if err != nil {
+		return 0
+	}
+	var user User
+	var login Login
+	// Find matching login to token
+	err = a.db.First(&login, "email = ?", token.claims.Username).Error
+	if err != nil {
+		http.Error(w, "Invalid login token", 400)
+	}
+	// Find user associated with login
+	err = a.db.First(&user, "id = ?", login.UserID).Error
+	if err != nil {
+		panic(err)
+	}
+  return login.UserID
 }
 
 func (a *App) upload(w http.ResponseWriter, r *http.Request) {
@@ -350,7 +371,20 @@ func wsPage(res http.ResponseWriter, req *http.Request) {
 	}
   // This is where we are creating client_id for a client
   // AIM: to send user-id from the front-end and use the same thing as a client-id
-	client := &Client{id: uuid.NewV4().String(), socket: conn, send: make(chan []byte)}
+  r := mux.NewRouter()
+	db, err := gorm.Open(sqlite.Open("test1.db"), &gorm.Config{})
+	if err != nil {
+		panic("Failed to connect to database")
+	}
+
+	setup(db)
+	app := App{db: db, r: r}
+
+  var user_id = strconv.Itoa(app.getCurrentUserId(res, req))
+  fmt.Println(user_id)
+
+	//client := &Client{id: uuid.NewV4().String(), socket: conn, send: make(chan []byte)}
+  client := &Client{id: user_id, socket: conn, send: make(chan []byte)}
 	manager.register <- client
 
 	go client.read()
