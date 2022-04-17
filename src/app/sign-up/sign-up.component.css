@@ -39,6 +39,10 @@
   float: right;
   margin-top: 16px
 }
+.location-search {
+  display: flex;
+  flex-direction: column;
+}
 
 /* Add a hover effect for buttons */
 button:hover {
