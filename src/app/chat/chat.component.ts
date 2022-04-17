@@ -15,6 +15,7 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   userSentName: string | undefined;
   userSentId: any;
+  currentuserId: any;
 
   // In the constructor method we inject our provider and intialize our public variables that are bound to the UI
   constructor(private socket: SocketService, private route: ActivatedRoute, private router: Router ) {
@@ -50,7 +51,9 @@ export class ChatComponent implements OnInit, OnDestroy {
 
       this.userSentName = params.userName;
       this.userSentId = params.userId;
-      console.log(this.userSentId, this.userSentName);
+      this.currentuserId = params.myuserId;
+      console.log("User, the message is directed to: ", this.userSentId, this.userSentName);
+      console.log("Current User ID: ", this.currentuserId);
     });
   }
 

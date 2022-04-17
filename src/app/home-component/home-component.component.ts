@@ -29,7 +29,7 @@ export class HomeComponentComponent implements OnInit {
   wantToChat(user: any): void{
     if (this.userLoggedIn){
       console.log('I want to chat with the user:' + user.Name);
-      this.router.navigate(['./chat'], {queryParams: {userId: user.Id, userName: user.Name}});
+      this.router.navigate(['./chat'], {queryParams: {userId: user.Id, userName: user.Name, myuserId: this.loggedInUserInfo.Id}});
     }
     else{
       console.log('You should be logged in to chat');
