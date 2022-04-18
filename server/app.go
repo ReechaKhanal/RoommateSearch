@@ -267,6 +267,7 @@ func (manager *ClientManager) start1() {
 				manager.send(jsonMessage, conn)
 			}
 		case message := <-manager.broadcast:
+      fmt.Println(string(message))
       // Looks like this is the place where messages are being sent from
 			for conn := range manager.clients {
 				select {
@@ -324,11 +325,12 @@ func (c *Client) read() {
 		var stringMessage = string(message)
 		stringMessage = strings.TrimSpace(stringMessage)
 		var index = strings.LastIndex(stringMessage, " ")
-		stringMessage = stringMessage[0: index]
-		var userId = stringMessage[index:]
+    var userId = stringMessage[index:]
+    stringMessage = stringMessage[0: index]
     // End of Added code to strip user_id out of the sent message
 
-		jsonMessage, _ := json.Marshal(&Message{Sender: c.id, Content: string(message), Recipient: userId})
+		//jsonMessage, _ := json.Marshal(&Message{Sender: c.id, Content: string(message), Recipient: userId})
+    jsonMessage, _ := json.Marshal(&Message{Sender: c.id, Recipient: userId, Content: stringMessage})
 		manager.broadcast <- jsonMessage
 	}
 }
