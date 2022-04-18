@@ -267,7 +267,6 @@ func (manager *ClientManager) start1() {
 				manager.send(jsonMessage, conn)
 			}
 		case message := <-manager.broadcast:
-      fmt.Println(string(message))
       // Looks like this is the place where messages are being sent from
 			for conn := range manager.clients {
 				select {
@@ -295,7 +294,6 @@ func (manager *ClientManager) start1() {
 // If for some reason the channel is clogged or the message can’t be sent, we assume the client has disconnected and we remove them instead.
 // To save repetitive code, a manager.send method was created to loop through each of the clients:
 func (manager *ClientManager) send(message []byte, ignore *Client) {
-
 	for conn := range manager.clients {
 		if conn != ignore {
 			conn.send <- message
@@ -330,7 +328,7 @@ func (c *Client) read() {
     // End of Added code to strip user_id out of the sent message
 
 		//jsonMessage, _ := json.Marshal(&Message{Sender: c.id, Content: string(message), Recipient: userId})
-    jsonMessage, _ := json.Marshal(&Message{Sender: c.id, Recipient: userId, Content: stringMessage})
+    jsonMessage, _ := json.Marshal(&Message{Sender: c.id, Recipient: strings.TrimSpace(userId), Content: stringMessage})
 		manager.broadcast <- jsonMessage
 	}
 }
@@ -351,8 +349,13 @@ func (c *Client) write() {
 				c.socket.WriteMessage(websocket.CloseMessage, []byte{})
 				return
 			}
+      var myMessage Message;
+      json.Unmarshal([]byte(message), &myMessage)
 
-			c.socket.WriteMessage(websocket.TextMessage, message)
+      // Code to only send the Message to Sender and Receiver
+      if (c.id == myMessage.Sender || c.id == myMessage.Recipient){
+        c.socket.WriteMessage(websocket.TextMessage, message)
+      }
 		}
 	}
 }
@@ -383,7 +386,6 @@ func wsPage(res http.ResponseWriter, req *http.Request) {
 	app := App{db: db, r: r}
 
   var user_id = strconv.Itoa(app.getCurrentUserId(res, req))
-  fmt.Println(user_id)
 
 	//client := &Client{id: uuid.NewV4().String(), socket: conn, send: make(chan []byte)}
   client := &Client{id: user_id, socket: conn, send: make(chan []byte)}
