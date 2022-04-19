@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { DbConnectService } from '../db-connect.service';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {DbConnectService} from '../db-connect.service';
+import {Router} from '@angular/router';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-home-component',
@@ -22,8 +23,15 @@ export class HomeComponentComponent implements OnInit {
   uploadedImage = false;
   userLoggedIn = false;
 
+  // Location Search
+  locationSearchForm: FormGroup;
+  distanceFormControl = new FormControl('25', [Validators.required]);
+
   constructor(backendService: DbConnectService, private router: Router){
     this.backendService = backendService;
+    this.locationSearchForm = new FormGroup( {
+        distance: this.distanceFormControl,
+    });
   }
 
   wantToChat(user: any): void{
@@ -68,5 +76,21 @@ export class HomeComponentComponent implements OnInit {
   ngOnInit(): void {
     this.getAllUserInfo();
     this.getLoggedInUser();
+  }
+
+  searchLocation(): void {
+      console.log(this.locationSearchForm.value);
+      if (this.locationSearchForm.valid) {
+          const data: any = this.locationSearchForm.value;
+          const params: any = {};
+          // Check if user selected an option
+          if (data.address !== String) {
+              params.latitude = data.address.y;
+              params.longitude = data.address.x;
+              params.distance = data.distance;
+          }
+          console.log(params);
+          this.backendService.getFilterDistance(params).subscribe();
+      }
   }
 }
