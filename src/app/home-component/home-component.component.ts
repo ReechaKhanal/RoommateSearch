@@ -92,7 +92,7 @@ export class HomeComponentComponent implements OnInit {
           console.log(params);
           this.backendService.getFilterDistance(params).subscribe(
               (response) => {
-                  console.log('yo');
+                  console.log(response);
                   this.allUserInfo = response;
               },
               (error) => {
