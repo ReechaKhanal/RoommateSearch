@@ -90,7 +90,15 @@ export class HomeComponentComponent implements OnInit {
               params.distance = data.distance;
           }
           console.log(params);
-          this.backendService.getFilterDistance(params).subscribe();
+          this.backendService.getFilterDistance(params).subscribe(
+              (response) => {
+                  console.log('yo');
+                  this.allUserInfo = response;
+              },
+              (error) => {
+                  console.log('error loading getFilterDistance data');
+              }
+          );
       }
   }
 }

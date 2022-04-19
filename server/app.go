@@ -3,17 +3,18 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-  "strings"
+	"github.com/umahmood/haversine"
 	"log"
 	"net/http"
 	"strconv"
+	"strings"
 	"time"
 
 	"github.com/gorilla/mux"
 	"github.com/gorilla/websocket"
-//	"github.com/satori/go.uuid"
-	"gorm.io/gorm"
 	"gorm.io/driver/sqlite"
+	//	"github.com/satori/go.uuid"
+	"gorm.io/gorm"
 )
 
 type App struct {
@@ -36,6 +37,7 @@ func (a *App) start() {
 	a.r.HandleFunc("/login", a.login).Methods("POST")
 	a.r.HandleFunc("/sign_Up", a.sign_Up).Methods("POST")
 	a.r.HandleFunc("/upload", a.upload).Methods("POST")
+	a.r.HandleFunc("/getFilterDistance", a.getFilterDistance).Methods("GET")
 	a.r.HandleFunc("/ws", wsPage)
 
 	handle := a.getHandle()
@@ -182,8 +184,8 @@ func (a *App) getLoggedInUser(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func (a *App) getCurrentUserId(w http.ResponseWriter, r *http.Request) int{
-  token, err := VerifyToken(w, r)
+func (a *App) getCurrentUserId(w http.ResponseWriter, r *http.Request) int {
+	token, err := VerifyToken(w, r)
 	if err != nil {
 		return 0
 	}
@@ -199,7 +201,50 @@ func (a *App) getCurrentUserId(w http.ResponseWriter, r *http.Request) int{
 	if err != nil {
 		panic(err)
 	}
-  return login.UserID
+	return login.UserID
+}
+
+func (a *App) getFilterDistance(w http.ResponseWriter, r *http.Request) {
+	latitude, err := strconv.ParseFloat(r.URL.Query().Get("latitude"), 64)
+	if err != nil {
+		fmt.Println("could not parse latitude")
+	}
+	longitude, err := strconv.ParseFloat(r.URL.Query().Get("longitude"), 64)
+	if err != nil {
+		fmt.Println("could not parse longitude")
+	}
+	distance, err := strconv.ParseFloat(r.URL.Query().Get("distance"), 64)
+	if err != nil {
+		fmt.Println("could not parse distance")
+	}
+	searchLocation := haversine.Coord{Lat: latitude, Lon: longitude}
+	var places []Place
+	// Grab all places from the database
+	err = a.db.Find(&places).Error
+	if err != nil {
+		panic(err)
+	}
+	var closePlaces []Place
+	for _, place := range places {
+		location := haversine.Coord{Lat: float64(place.Latitude), Lon: float64(place.Longitude)}
+		milesDifference, _ := haversine.Distance(searchLocation, location)
+		if milesDifference <= distance {
+			closePlaces = append(closePlaces, place)
+		}
+	}
+	var ids []int
+	for _, closePlace := range closePlaces {
+		ids = append(ids, closePlace.UserID)
+	}
+	var closeUsers []User
+	err = a.db.Find(&closeUsers, ids).Error
+	if err != nil {
+		panic(err)
+	}
+	err = json.NewEncoder(w).Encode(closeUsers)
+	if err != nil {
+		http.Error(w, err.Error(), 400)
+	}
 }
 
 func (a *App) upload(w http.ResponseWriter, r *http.Request) {
@@ -214,16 +259,16 @@ func (a *App) upload(w http.ResponseWriter, r *http.Request) {
 // and messages that are to be broadcasted to and from all connected clients.
 type ClientManager struct {
 	clients    map[*Client]bool // all connected clients
-	broadcast  chan []byte // messages that are to be broadcasted from and to all connected clients
-	register   chan *Client // clients trying to be registered
-	unregister chan *Client // clients trying to be unregistered/removed
+	broadcast  chan []byte      // messages that are to be broadcasted from and to all connected clients
+	register   chan *Client     // clients trying to be registered
+	unregister chan *Client     // clients trying to be unregistered/removed
 }
 
 // Each Client has a unique id, a socket connection, and a message waiting to be sent
 type Client struct {
-	id     string // client ID
+	id     string          // client ID
 	socket *websocket.Conn // the connection socket
-	send   chan []byte // message to send
+	send   chan []byte     // message to send
 }
 
 // To add complexity to the data being passed around, it will be in JSON format.
@@ -267,7 +312,7 @@ func (manager *ClientManager) start1() {
 				manager.send(jsonMessage, conn)
 			}
 		case message := <-manager.broadcast:
-      // Looks like this is the place where messages are being sent from
+			// Looks like this is the place where messages are being sent from
 			for conn := range manager.clients {
 				select {
 				case conn.send <- message:
@@ -319,16 +364,16 @@ func (c *Client) read() {
 			break
 		}
 
-    // Added code to strip user_id out of the sent message
+		// Added code to strip user_id out of the sent message
 		var stringMessage = string(message)
 		stringMessage = strings.TrimSpace(stringMessage)
 		var index = strings.LastIndex(stringMessage, " ")
-    var userId = stringMessage[index:]
-    stringMessage = stringMessage[0: index]
-    // End of Added code to strip user_id out of the sent message
+		var userId = stringMessage[index:]
+		stringMessage = stringMessage[0:index]
+		// End of Added code to strip user_id out of the sent message
 
 		//jsonMessage, _ := json.Marshal(&Message{Sender: c.id, Content: string(message), Recipient: userId})
-    jsonMessage, _ := json.Marshal(&Message{Sender: c.id, Recipient: strings.TrimSpace(userId), Content: stringMessage})
+		jsonMessage, _ := json.Marshal(&Message{Sender: c.id, Recipient: strings.TrimSpace(userId), Content: stringMessage})
 		manager.broadcast <- jsonMessage
 	}
 }
@@ -349,13 +394,13 @@ func (c *Client) write() {
 				c.socket.WriteMessage(websocket.CloseMessage, []byte{})
 				return
 			}
-      var myMessage Message;
-      json.Unmarshal([]byte(message), &myMessage)
+			var myMessage Message
+			json.Unmarshal([]byte(message), &myMessage)
 
-      // Code to only send the Message to Sender and Receiver
-      if (c.id == myMessage.Sender || c.id == myMessage.Recipient){
-        c.socket.WriteMessage(websocket.TextMessage, message)
-      }
+			// Code to only send the Message to Sender and Receiver
+			if c.id == myMessage.Sender || c.id == myMessage.Recipient {
+				c.socket.WriteMessage(websocket.TextMessage, message)
+			}
 		}
 	}
 }
@@ -374,9 +419,9 @@ func wsPage(res http.ResponseWriter, req *http.Request) {
 		http.NotFound(res, req)
 		return
 	}
-  // This is where we are creating client_id for a client
-  // AIM: to send user-id from the front-end and use the same thing as a client-id
-  r := mux.NewRouter()
+	// This is where we are creating client_id for a client
+	// AIM: to send user-id from the front-end and use the same thing as a client-id
+	r := mux.NewRouter()
 	db, err := gorm.Open(sqlite.Open("test1.db"), &gorm.Config{})
 	if err != nil {
 		panic("Failed to connect to database")
@@ -385,10 +430,10 @@ func wsPage(res http.ResponseWriter, req *http.Request) {
 	setup(db)
 	app := App{db: db, r: r}
 
-  var user_id = strconv.Itoa(app.getCurrentUserId(res, req))
+	var user_id = strconv.Itoa(app.getCurrentUserId(res, req))
 
 	//client := &Client{id: uuid.NewV4().String(), socket: conn, send: make(chan []byte)}
-  client := &Client{id: user_id, socket: conn, send: make(chan []byte)}
+	client := &Client{id: user_id, socket: conn, send: make(chan []byte)}
 	manager.register <- client
 
 	go client.read()
