@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -11,6 +11,7 @@ export class DbConnectService {
   loginUrl = 'http://localhost:8080/login';
   uploadImageUrl = 'http://localhost:8080/upload';
   getLoggedInUserUrl = 'http://localhost:8080/getLoggedInUser';
+  getFilterDistanceUrl = 'http://localhost:8080/getFilterDistance';
 
   constructor(private http: HttpClient) { }
 
@@ -39,5 +40,14 @@ export class DbConnectService {
   uploadImage(data: any): Observable<object> {
     console.log('Uploading Image to backend');
     return this.http.post(this.uploadImageUrl, data);
+  }
+
+  getFilterDistance(filter: any): Observable<object> {
+    console.log('MAKING getFilterDistance HTTP REQUEST');
+    let params = new HttpParams();
+    params = params.append('longitude', filter.longitude);
+    params = params.append('latitude', filter.latitude);
+    params = params.append('distance', filter.distance);
+    return this.http.get(this.getFilterDistanceUrl, {params});
   }
 }

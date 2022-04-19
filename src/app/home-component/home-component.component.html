@@ -1,8 +1,22 @@
 <app-navbar></app-navbar>
 <body>
-<div class="app-home-map">
-    <app-map></app-map>
-</div>
+<form class="app-home-map" [formGroup]="locationSearchForm" (ngSubmit)="searchLocation()">
+    <app-location-search class="location-search" [parentFormGroup]="locationSearchForm"></app-location-search>
+    <mat-form-field class="distance-filter" appearance="fill">
+        <mat-label>Select an option</mat-label>
+        <mat-select [formControl]="distanceFormControl">
+            <mat-option value="5">5 miles</mat-option>
+            <mat-option value="10">10 miles</mat-option>
+            <mat-option value="15">15 miles</mat-option>
+            <mat-option value="20">20 miles</mat-option>
+            <mat-option value="25">25 miles</mat-option>
+            <mat-option value="50">50 miles</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button class="submitButton" mat-fab color="primary">
+        <mat-icon>explore</mat-icon>
+    </button>
+</form>
 <div class="alluserobjects">
     <ng-container *ngFor="let user of allUserInfo">
         <div class="userobjects" *ngIf="loadedLoggedInUser && (!userLoggedIn || user.Id != loggedInUserInfo.Id)">

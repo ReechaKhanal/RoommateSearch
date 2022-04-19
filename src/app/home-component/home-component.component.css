@@ -47,3 +47,34 @@ img {
 
 .user-card { transition: all .35s ease-in-out; }
 .user-card:hover { transform: scale(1.1); }
+
+.app-home-map {
+  justify-content: center;
+  align-self: center;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+}
+.location-search {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding-top: 20px;
+  padding-right: 10px;
+  max-width: 30%;
+}
+.distance-filter {
+  display: flex;
+  padding-top: 20px;
+}
+
+.submitButton {
+  background-color: steelblue;
+  color: white;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+button:hover {
+  opacity: 0.8;
+}
