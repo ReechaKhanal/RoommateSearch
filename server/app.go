@@ -236,6 +236,9 @@ func (a *App) getFilterDistance(w http.ResponseWriter, r *http.Request) {
 	for _, closePlace := range closePlaces {
 		ids = append(ids, closePlace.UserID)
 	}
+	if len(ids) == 0 {
+		return
+	}
 	var closeUsers []User
 	err = a.db.Find(&closeUsers, ids).Error
 	if err != nil {
