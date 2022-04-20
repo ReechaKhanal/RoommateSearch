@@ -18,13 +18,13 @@
 }
 
 .submitButton {
-  background-color: steelblue;
+  background-color: #4682b4;
   color: white;
   cursor: pointer;
   width: 100%;
 }
 .imageButton {
-  background-color: steelblue;
+  background-color: #4682b4;
   color: white;
   cursor: pointer;
   width: fit-content;

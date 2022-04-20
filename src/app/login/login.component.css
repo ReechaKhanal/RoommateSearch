@@ -1,6 +1,6 @@
 .title{
   text-align: center;
-  color:steelblue;
+  color:#4682b4;
   font-size:xx-large;
   z-index: 999;
 }
@@ -11,7 +11,7 @@ form {
 
 /* Set a style for all buttons */
 .submitButton {
-  background-color: steelblue;
+  background-color: #4682b4;
   color: white;
   cursor: pointer;
   width: 100%;
