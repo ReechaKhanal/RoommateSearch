@@ -29,6 +29,7 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { SocketService } from "./socket.service";
 import { LocationSearchComponent } from './location-search/location-search.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     EmailFormComponent,
     FooterComponent,
     EditProfileComponent,
-    LocationSearchComponent
+    LocationSearchComponent,
+    UserComponent
   ],
     imports: [
         BrowserModule,
