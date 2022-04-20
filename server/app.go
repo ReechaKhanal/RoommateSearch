@@ -207,15 +207,15 @@ func (a *App) getCurrentUserId(w http.ResponseWriter, r *http.Request) int {
 func (a *App) getFilterDistance(w http.ResponseWriter, r *http.Request) {
 	latitude, err := strconv.ParseFloat(r.URL.Query().Get("latitude"), 64)
 	if err != nil {
-		fmt.Println("could not parse latitude")
+		http.Error(w, "could not parse latitude", 400)
 	}
 	longitude, err := strconv.ParseFloat(r.URL.Query().Get("longitude"), 64)
 	if err != nil {
-		fmt.Println("could not parse longitude")
+		http.Error(w, "could not parse longitude", 400)
 	}
 	distance, err := strconv.ParseFloat(r.URL.Query().Get("distance"), 64)
 	if err != nil {
-		fmt.Println("could not parse distance")
+		http.Error(w, "could not parse distance", 400)
 	}
 	searchLocation := haversine.Coord{Lat: latitude, Lon: longitude}
 	var places []Place
