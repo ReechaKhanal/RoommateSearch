@@ -3,6 +3,8 @@
 describe('Startup Roommate Search', () => {
 
 	beforeEach(() => {
+
+      cy.viewport( 1270, 900)
 	    // Visit http://localhost:4200/ to start testing our application
 	    cy.visit('http://localhost:4200/');
 
@@ -16,6 +18,7 @@ describe('Startup Roommate Search', () => {
       cy.get("input[name=psw]").type('test123', { log: false });
       // Press Login Button
       cy.get("button[type='submit']").click();
+
 	})
 
   it("Navigation Bar Functionality", () => {
@@ -23,15 +26,14 @@ describe('Startup Roommate Search', () => {
     // Check if Home page contains user cards
     cy.get('.user-card');
 
-		// Click on the profile button and see if it takes us to the profile page
-		cy.get('.nav-profile').click()
-    cy.contains('Update preferences');
-    cy.get('.nav-profile').click()
-
+    cy.wait(500);
+    cy.wait(500);
 		// Click on the Chat button in Nav Bar and see if it takes us to the Chat Page
     cy.get('.nav-chat').click();
     cy.contains('Chat History');
 
+    cy.wait(500);
+    cy.wait(500);
 		// Reaching here would mean everything work correctly
 		// Click on the Home button to see if the button is functioning correctly.
     cy.get('.nav-home').click()

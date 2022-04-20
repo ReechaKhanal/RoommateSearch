@@ -14,11 +14,13 @@
 }
 
 .send-message-button{
-  background-color: blue;
+  background-color: #4682b4;
   color: white;
   margin: 5px;
 }
-
+.send-message{
+  padding: 10px;
+}
 .send-message-input{
   padding: 10px;
   width: 40%;

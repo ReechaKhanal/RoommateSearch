@@ -6,7 +6,8 @@
     Chat History
   </mat-sidenav>
   <mat-sidenav-content class= "chat-content">
-    <p style="border: 2px;background-color: blue;color:white; padding: 15px; margin:0px">{{userSentName}}</p>
+    <p style="border: 2px;background-color: #4682b4;color:white; padding: 15px; margin:0px">{{userSentName}}</p>
+    <span style="height:100%;width:60%;background:#dddddd;">
     <mat-card>
       <title>User Name</title>
       <ul id="messages">
@@ -15,10 +16,18 @@
         </li>
       </ul>
       <div class = "send-message">
-        <input [(ngModel)]="chatBox" [ngModelOptions]="{standalone: true}" autocomplete="off" class="send-message-input" placeholder="Enter your message"/>
+          <span style='position:relative; bottom:0px;'>
+        <mat-form-field appearance="fill">
+          <mat-label>Enter your text here</mat-label>
+          <textarea matInput></textarea>
+        </mat-form-field>
+          </span>
+        <span style='position:relative; bottom:0px;right:0px'>
         <button (click)="send()" class="send-message-button" mat-button color="primary">Send</button>
+        </span>
       </div>
     </mat-card>
+  </span>
   </mat-sidenav-content>
 </mat-sidenav-container>
 
