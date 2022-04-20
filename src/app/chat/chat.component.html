@@ -15,7 +15,10 @@
         </li>
       </ul>
       <div class = "send-message">
-        <input [(ngModel)]="chatBox" [ngModelOptions]="{standalone: true}" autocomplete="off" class="send-message-input" placeholder="Enter your message"/>
+        <mat-form-field appearance="fill">
+          <mat-label>Enter your text here</mat-label>
+          <textarea matInput></textarea>
+        </mat-form-field>
         <button (click)="send()" class="send-message-button" mat-button color="primary">Send</button>
       </div>
     </mat-card>
