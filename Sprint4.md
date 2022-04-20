@@ -33,12 +33,20 @@ Routing and API Information:  [[Link Here]]
 ## [Backend] Post-man API Testing
 
 ## Front-end Functionality
+
+#### Address Autofill Functionality
 ![](./Images/address_autofill.gif)
 
+#### Filter by Users Nearest to the Location You Enter
 ![](./Images/filter_location.gif)
 
+### Personalized Chat Between Two Logged in Users.
+![](./Images/Cypress-Chat-Functionality.gif)
+
 ## [Front-end] Cypress Testing:
+
+#### Cypress Testing for Application Startup and Login
 ![](./Images/Cypress_Login_Appplication_Startup.gif)
 
+#### Cypress Testing for Location Functionality
 ![](./Images/Cypress-Location-Functionality.gif)
-
