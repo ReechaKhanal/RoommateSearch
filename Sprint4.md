@@ -46,7 +46,7 @@ Routing and API Information:  [[Link Here]]
 ## [Front-end] Cypress Testing:
 
 #### Cypress Testing for Application Startup and Login
-![](./Images/Cypress_Login_Appplication_Startup.gif)
+![](./Images/Cypress-Test-Startup.gif)
 
 #### Cypress Testing for Location Functionality
 ![](./Images/Cypress-Location-Functionality.gif)
