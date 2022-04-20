@@ -40,5 +40,5 @@ Routing and API Information:  [[Link Here]]
 ## [Front-end] Cypress Testing:
 ![](./Images/Cypress_Login_Appplication_Startup.gif)
 
-![](./Images/Cypress\ Location-Functionality.gif)
+![](./Images/Cypress-Location-Functionality.gif)
 
