@@ -41,12 +41,12 @@ Routing and API Information:  [[Link Here]]
 ![](./Images/filter_location.gif)
 
 ### Personalized Chat Between Two Logged in Users.
-![](./Images/Cypress-Chat-Functionality.gif)
+![](./Images/Cypress-Test-Chat.gif)
 
 ## [Front-end] Cypress Testing:
 
 #### Cypress Testing for Application Startup and Login
-![](./Images/Cypress_Login_Appplication_Startup.gif)
+![](./Images/Cypress-Test-Startup.gif)
 
 #### Cypress Testing for Location Functionality
 ![](./Images/Cypress-Location-Functionality.gif)
