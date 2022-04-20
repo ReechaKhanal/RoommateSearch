@@ -1,6 +1,6 @@
 .title{
   text-align: center;
-  color:steelblue;
+  color:#4682b4;
   font-size:xx-large;
   z-index: 999;
 }
@@ -20,7 +20,7 @@ mat-sidenav-container{
 }
 
 mat-sidenav{
-  background-color: steelblue;
+  background-color: #4682b4;
   width: fit-content;
 }
 
