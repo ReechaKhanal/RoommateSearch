@@ -41,7 +41,7 @@ Routing and API Information:  [[Link Here]]
 ![](./Images/filter_location.gif)
 
 ### Personalized Chat Between Two Logged in Users.
-![](./Images/Cypress-Chat-Functionality.gif)
+![](./Images/Cypress-Test-Chat.gif)
 
 ## [Front-end] Cypress Testing:
 
