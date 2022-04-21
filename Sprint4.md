@@ -2,7 +2,7 @@
 \
 Sprint Four Board:  [[Click here for Sprint Three Issues Board]](https://github.com/users/ReechaKhanal/projects/13/views/1)\
 Database Schema Information:  [[Link Here]](https://github.com/ReechaKhanal/RoommateSearch/wiki/Database)\
-Routing and API Information:  [[Link Here]]
+Routing and API Information:  [[Link Here]](https://github.com/ReechaKhanal/RoommateSearch/edit/main/Sprint4.md)
 
 ## Major Tasks and Accomplishments: 
 
