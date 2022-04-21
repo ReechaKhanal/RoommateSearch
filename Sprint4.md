@@ -2,7 +2,7 @@
 \
 Sprint Four Board:  [[Click here for Sprint Three Issues Board]](https://github.com/users/ReechaKhanal/projects/13/views/1)\
 Database Schema Information:  [[Link Here]](https://github.com/ReechaKhanal/RoommateSearch/wiki/Database)\
-Routing and API Information:  [[Link Here]]\
+Routing and API Information:  [[Link Here]]
 
 ## Major Tasks and Accomplishments: 
 
@@ -30,27 +30,43 @@ Routing and API Information:  [[Link Here]]\
 4. Created a Make File for the Application:\
 [Issue #14](https://github.com/ReechaKhanal/RoommateSearch/issues/14)
 
-## [Backend] Post-man API Testing:\
+## [Backend] Post-man API Testing:
+
+#### Postman API Testing for Filtering Based on Location
 ![](./Images/Postman_GetFilteredUser.gif)
+
+#### Postman API Testing for Geting All User Information from the Database
 ![](./Images/Postman-API-backend_GetAllUserInfo.gif)
+
+#### Postman API Testing for Login and Signup Functionality
 ![](./Images/Postman_SignUp_Login.gif)
+
+#### Postman API Testing For Chat and Websocket connection
 ![](./Images/Postman_WS_Chat.gif)
+
+#### Postman API Testing For Token to Save User State
 ![](./Images/Postman_session_token.gif)
-## Front-end Functionality:
 
-#### Address Autofill Functionality
-![](./Images/address_autofill.gif)
 
-#### Filter by Users Nearest to the Location You Enter
-![](./Images/filter_location.gif)
-
-### Personalized Chat Between Two Logged in Users.
-![](./Images/Cypress-Test-Chat.gif)
-
-## [Front-end] Cypress Testing:
-
+## Front-end Cypress Testing:
 #### Cypress Testing for Application Startup and Login
 ![](./Images/Cypress-Test-Startup.gif)
 
 #### Cypress Testing for Location Functionality
 ![](./Images/Cypress-Location-Functionality.gif)
+
+
+## Back-end Unit Testing:
+![](./Images/go_test.gif.gif)
+
+#### Back-end Unit Testing in GOLANG
+
+## Front-end Functionality:
+##### Address Autofill Functionality
+![](./Images/address_autofill.gif)
+
+#### Filter by Users Nearest to the Location You Enter
+![](./Images/filter_location.gif)
+
+#### Personalized Chat Between Two Logged in Users.
+![](./Images/Cypress-Test-Chat.gif)
