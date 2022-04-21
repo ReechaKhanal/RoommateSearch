@@ -70,3 +70,8 @@ Routing and API Information:  [[Link Here]](https://github.com/ReechaKhanal/Room
 
 #### Personalized Chat Between Two Logged in Users.
 ![](./Images/Cypress-Test-Chat.gif)
+
+Click on the Link Below to watch a demo of the Application:
+
+[Roommate Search/Homies Final Demo Video](https://youtu.be/xBtxTqzMD44)
+
