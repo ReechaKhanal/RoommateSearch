@@ -11,7 +11,7 @@ All of our group members have contributed to both front-end and back-end. We don
 
 ## Project Description
 
-Our project aims at helping students or people who have moved to a new town ease their move process by helping them find roommates and getting used to the new town. Our main feature for this project will be finding roommates based on one's location and other criterias. We want to enable potential-roomates with similar interests to be matched to and contact one another. 
+Our project aims at helping students or people who have moved to a new town ease their move process by helping them find roommates and getting used to the new town. Our website allows users to sign up with their information and login to their accounts. Our main feature for this project will be finding roommates based on one's location and being able to chat with each other. User’s will be able to filter other user’s based on a certain distance from a chosen location on the home page. By clicking on “Send message”, the user will be able to communicate with a potential roommate with our dedicated chat system.
 
 ## Technology Stack:
 Front-end: Angular version 11.0.0
