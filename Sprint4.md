@@ -57,7 +57,7 @@ Routing and API Information:  [[Link Here]]
 
 
 ## Back-end Unit Testing:
-![](./Images/go_test.gif.gif)
+![](./Images/go_test.gif)
 
 #### Back-end Unit Testing in GOLANG
 
